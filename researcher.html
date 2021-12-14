@@ -1,0 +1,2529 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Find the answers to your Research Data Management questions in Life Sciences.">
+    <meta name="keywords" content="compliance, data analysis, DMP, data organisation, data publication, data quality, existing data, metadata, identifiers">
+    <meta property="og:title" content="RDMkit" />
+    <meta property="og:description" content="Find the answers to your Research Data Management questions in Life Sciences." />
+    <meta property="og:image" content="//rdmkit.elixir-europe.org/assets/img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="RDMkit">
+    <meta name="msapplication-TileColor" content="#c23669">
+    <meta name="theme-color" content="#c23669">
+    <title>Researcher | RDMkit</title>
+    <!-- Syntax highlighting  -->
+    <link rel="stylesheet" href="/pages/bedroesb/rdmkit/assets/css/syntax.css">
+    <!-- Country flags  -->
+    <link rel="stylesheet" href="/pages/bedroesb/rdmkit/assets/css/flag-icon.min.css">
+    <!-- Font Awesome 5 Icons -->
+    <link rel="stylesheet" type="text/css" href="/pages/bedroesb/rdmkit/assets/css/all.min.css">
+    <!-- Main css file -->
+    <link rel="stylesheet" href="/pages/bedroesb/rdmkit/main.css">
+    <!-- Main font  -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- JavaScript  -->
+    <script src="/pages/bedroesb/rdmkit/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/lunr.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/anchor.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/toc.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/jquery.navgoco.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/jquery.cookie.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/main.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/search.js"></script>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/pages/bedroesb/rdmkit/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/pages/bedroesb/rdmkit/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/pages/bedroesb/rdmkit/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="/pages/bedroesb/rdmkit/assets/img/site.webmanifest">
+    <link rel="mask-icon" href="/pages/bedroesb/rdmkit/assets/img/safari-pinned-tab.svg" color="#c23669">
+    <link rel="shortcut icon" href="/pages/bedroesb/rdmkit/assets/img/favicon.ico">
+    <!-- Schema.org metadata -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "RDMkit",
+        "url": "https://github.com",
+        "about": "Find the answers to your Research Data Management questions in Life Sciences.",
+        "author": [
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0001-9114-2896",
+                "mainEntityOfPage": "https://orcid.org/0000-0001-9114-2896",
+                "email": "m.jetten@dtls.nl",
+                "url": "https://github.com/MijkeJetten",
+                "image": "https://avatars.githubusercontent.com/MijkeJetten",
+                "name": "Mijke Jetten"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-9016-4820",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-9016-4820",
+                "email": "federico.bianchini@mn.uio.no",
+                "url": "https://github.com/bianchini88",
+                "image": "https://avatars.githubusercontent.com/bianchini88",
+                "jobTitle": "editor",
+                "name": "Federico Bianchini"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-0065-5053",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-0065-5053",
+                "email": "gregoire.rossier@sib.swiss",
+                "name": "Gregoire Rossier"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-6014-1249",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-6014-1249",
+                "email": "erik.hjerde@uit.no",
+                "url": "https://github.com/ehj000",
+                "image": "https://avatars.githubusercontent.com/ehj000",
+                "name": "Erik Hjerde"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0003-1391-9959",
+                "mainEntityOfPage": "https://orcid.org/0000-0003-1391-9959",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "CSC - IT Center for Science / ELIXIR-FI"
+                },
+                "email": "siiri.fuchs@csc.fi",
+                "url": "https://github.com/siirif",
+                "image": "https://avatars.githubusercontent.com/siirif",
+                "name": "Siiri Fuchs"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0003-2313-0011",
+                "mainEntityOfPage": "https://orcid.org/0000-0003-2313-0011",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "CSC - IT Center for Science / ELIXIR-FI"
+                },
+                "email": "minna.ahokas@csc.fi",
+                "url": "https://github.com/minnami",
+                "image": "https://avatars.githubusercontent.com/minnami",
+                "name": "Minna Ahokas"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0001-8276-5135",
+                "mainEntityOfPage": "https://orcid.org/0000-0001-8276-5135",
+                "email": "adler@ut.ee",
+                "url": "https://github.com/adlerpriit",
+                "image": "https://avatars.githubusercontent.com/adlerpriit",
+                "name": "Priit Adler"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0001-6691-4233",
+                "mainEntityOfPage": "https://orcid.org/0000-0001-6691-4233",
+                "email": "alexander.botzki@vib.be",
+                "url": "https://github.com/abotzki",
+                "image": "https://avatars.githubusercontent.com/abotzki",
+                "name": "Alexander Botzki"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-3491-2361",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-3491-2361",
+                "email": "andrewsr9@cardiff.ac.uk",
+                "url": "https://github.com/robertmand",
+                "image": "https://avatars.githubusercontent.com/robertmand",
+                "name": "Robert Andrews"
+            },
+            {
+                "@type": "Person",
+                "email": "celia.vangelder@dtls.nl",
+                "url": "https://github.com/celiavg",
+                "image": "https://avatars.githubusercontent.com/celiavg",
+                "name": "Celia van Gelder"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-1331-4311",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-1331-4311",
+                "email": "dwibberg@cebitec.uni-bielefeld.de",
+                "url": "https://github.com/dwibberg",
+                "image": "https://avatars.githubusercontent.com/dwibberg",
+                "name": "Daniel Wibberg"
+            },
+            {
+                "@type": "Person",
+                "name": "Graham Hughes"
+            },
+            {
+                "@type": "Person",
+                "name": "Marko Vidak"
+            },
+            {
+                "@type": "Person",
+                "name": "Pedro Fernandes"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-2224-0780",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-2224-0780",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "LCSB / ELIXIR-LU"
+                },
+                "url": "https://github.com/pinarpink",
+                "image": "https://avatars.githubusercontent.com/pinarpink",
+                "jobTitle": "editor",
+                "name": "Pinar Alper"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-5514-6651",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-5514-6651",
+                "url": "https://github.com/vdda",
+                "image": "https://avatars.githubusercontent.com/vdda",
+                "name": "Victoria Dominguez D. Angel"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-3890-6620",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-3890-6620",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "NBIS / ELIXIR-SE"
+                },
+                "email": "wolmar.n.akerstrom@nbis.se",
+                "url": "https://github.com/wna-se",
+                "image": "https://avatars.githubusercontent.com/wna-se",
+                "name": "Wolmar Nyberg Åkerström"
+            },
+            {
+                "@type": "Person",
+                "name": "Alexia Cardona"
+            },
+            {
+                "@type": "Person",
+                "url": "https://github.com/smza",
+                "image": "https://avatars.githubusercontent.com/smza",
+                "jobTitle": "editor",
+                "name": "Munazah Andrabi"
+            }
+        ]
+    }
+</script>
+
+    <!-- Google analytics -->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RXQ55EFTTH"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RXQ55EFTTH');
+</script>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+<header>
+    <a class="visually-hidden-focusable" href='#main'>Skip to content</a>
+    <a class="visually-hidden-focusable" href='#footer'>Skip to footer</a>
+    <nav class="navbar navbar-expand-lg mb-3 mb-lg-5 bg-dark navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/pages/bedroesb/rdmkit/index.html"><img alt="ELIXIR logo" src="/pages/bedroesb/rdmkit/assets/img/RDMkit_logo_inverted.svg"></a>
+            <button class="navbar-toggler text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i title="navbar-toggler" class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <!-- navigation entries -->
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/index.html">Home</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/about.html">About</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/how_to_contribute.html">Contribute</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2 d-flex align-items-center" href="https://github.com/bedroesb/rdmkit"><i class="fab fa-github me-2"></i>GitHub</a>
+                    </li>
+                    <!--start search-->
+                    <li class="nav-item ms-0 ms-lg-3 my-2 my-lg-0">
+                        <div class="position-relative">
+                            <form role="search" class="input-group">
+                                <span class="input-group-text" id="search-label"><i class="fa fa-search"></i></span><input type="search" id="search-input" class="search-input form-control" tabindex="0" placeholder="Search RDMkit" aria-label="Search RDMkit" autocomplete="off">
+                            </form>
+                            <div id="search-results" class="search-results"></div>
+                        </div>
+                    </li>
+                    <!--end search-->
+                </ul>
+            </div>
+        </div>
+        <!-- /.container -->
+    </nav>
+</header>
+
+    <!-- Page Content -->
+    <div class="container min-vh-100">
+        <!-- Content Row -->
+        <div class="row gx-0 gx-lg-5">
+            <!-- Sidebar Column -->
+            <div class="col-lg-3">
+                <button class="btn bg-light text-start d-lg-none collapsed sidebar-collapse btn w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#side-nav" aria-controls="side-nav" aria-expanded="true" aria-label="Toggle navigation">
+    Main menu <i title="navbar-toggler" class="fa fa-bars ms-2"></i>
+</button>
+<nav class="collapse" id="side-nav" aria-label="Side navigation">
+    <ul id="menu" class="menu list-unstyled mb-4 mb-lg-0">
+        
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Data life cycle</a>
+            <ul class="list-unstyled">
+                <li class="sidebar_rdm_sub">
+                
+                    <svg version="1.1" id="data-life-cycle" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250.9 251"
+                        style="enable-background:new 0 0 250.9 251;" xml:space="preserve" class="sidebar_rdm">
+                        <style type="text/css">
+                            .st10,.st12,.st13,.st14,.st15,.st16,.st17 {fill:#83858e;}
+                            .st1{fill:#FFFFFF; pointer-events: none;}
+                            .st0{fill:#FA484B;}
+                            .st5{fill:#F67028;}
+                            .st6{fill:#FAC54B;}
+                            .st4{fill:#8ABA56;}
+                            .st3{fill:#32B890;}
+                            .st2{fill:#4176A5;}
+                            .st7{fill:#9E51AD;}
+                            .st8{font-family: 'Exo 2', sans-serif;}
+                            .st9{font-size:13.5px;}
+                            .st0,.st2,.st3,.st4,.st5,.st6,.st7 {transition: fill 0.3s;}
+                            .st10:hover{fill:#FA484B;cursor: pointer;}
+                            .st15:hover{fill:#F67028;cursor: pointer;}
+                            .st16:hover{fill:#FAC54B;cursor: pointer;}
+                            .st14:hover{fill:#8ABA56;cursor: pointer;}
+                            .st13:hover{fill:#32B890;cursor: pointer;}
+                            .st12:hover{fill:#4176A5;cursor: pointer;}
+                            .st17:hover{fill:#9E51AD;cursor: pointer;}
+                            text {pointer-events : none;}
+                        </style>
+                        <a href="./planning" id="link-to-planning" target="_top" title="planning">
+                            <g id="PlanPath">
+                                <path class="st15"
+                                    d="M144.4,31.6l-16.6,32.3c17.5,0.7,33.2,8.6,44,20.9l35.7-7l14.6-32.4C199.6,18.3,166,0.8,128.2,0L144.4,31.6z" />
+                                <path class="st1"
+                                    d="M166.7,24.1c0.3-0.4,0.8-0.6,1.4-0.6c4.7,0,9.4,0,14.1,0c0.5,0,1,0.2,1.4,0.6c0.3,0.3,0.4,0.7,0.4,1.2
+                                    c0,1,0,2,0,3c-0.3,0.3-0.5,0.5-0.8,0.8c-2.6,2.6-5.3,5.3-7.9,7.9c-0.1,0.1-0.3,0.3-0.3,0.5c-0.4,1.6-0.8,3.1-1.2,4.7
+                                    c0,0.2-0.1,0.4,0,0.5c0.1,0.2,0.4,0.3,0.7,0.3c1.6-0.4,3.2-0.8,4.7-1.3c0.2,0,0.3-0.1,0.4-0.3c1.5-1.5,3-3,4.5-4.5
+                                    c0,2.5,0,5.1,0,7.6c0,0.4-0.1,0.8-0.3,1.1c-0.3,0.4-0.9,0.7-1.4,0.7c-4.7,0-9.4,0-14.1,0c-0.3,0-0.7,0-1-0.2
+                                    c-0.3-0.2-0.6-0.4-0.7-0.8c-0.1-0.3-0.2-0.6-0.2-0.9c0-6.4,0-12.8,0-19.2C166.3,24.8,166.4,24.4,166.7,24.1z" />
+                                <path class="st1" d="M185.5,28.4c0.5-0.3,1.2-0.4,1.7-0.1c0.3,0.2,0.6,0.4,0.8,0.7c0.5,0.6,0.6,1.5,0.1,2.1
+                                    c-0.1,0.2-0.3,0.4-0.5,0.5c-0.9-0.9-1.8-1.8-2.7-2.7C185.1,28.7,185.3,28.5,185.5,28.4z" />
+                                <path class="st1" d="M176.3,37.5c2.6-2.6,5.2-5.2,7.8-7.8c0.9,0.9,1.8,1.8,2.7,2.7c-2.6,2.6-5.2,5.2-7.8,7.8
+                                    C178.1,39.3,177.2,38.4,176.3,37.5z" />
+                                <path class="st1"
+                                    d="M175.8,38.6l0.1,0.1c0.7,0.7,1.3,1.3,2,2c-1,0.3-1.9,0.5-2.9,0.8C175.3,40.6,175.6,39.6,175.8,38.6z" />
+                            </g>
+                        </a>
+                        <a href="./collecting" id="link-to-collecting" target="_top" title="collecting">
+                            <g id="CollectPath">
+                                <path class="st16" d="M213.9,159.8l34.4-8.7c1.7-8.3,2.6-16.8,2.6-25.6c0-28.5-9.5-54.7-25.4-75.8L210.8,82l-35.6,7
+                                    c7.5,10.2,11.9,22.8,11.9,36.4c0,3.7-0.3,7.3-1,10.8L213.9,159.8z" />
+                                <path class="st1" d="M215.4,91.9c0.2-0.4,0.6-0.6,1.1-0.6c2.3,0,4.7,0,7,0c0.4,0,0.8,0.2,1,0.5c0.4,0.5,0.3,1.2-0.1,1.6
+                                    c-0.2,0.2-0.5,0.3-0.8,0.3c-0.2,0-0.5,0-0.7,0.1c-0.2,0.1-0.3,0.2-0.3,0.4c0,1.6,0,3.1,0,4.7c0,0.8,0.1,1.6,0.4,2.4
+                                    c0.2,0.4,0.4,0.8,0.6,1.2c0.6,1.1,1.2,2.1,1.8,3.2c-3.7,0-7.4,0-11.1,0c0.7-1.2,1.4-2.5,2-3.7c0.3-0.5,0.5-1,0.6-1.6
+                                    c0.1-0.5,0.2-1,0.2-1.5c0-1.6,0-3.2,0-4.8c0-0.3-0.3-0.5-0.5-0.5c-0.3,0-0.5,0-0.7-0.1c-0.3-0.1-0.5-0.3-0.6-0.5
+                                    C215.2,92.8,215.2,92.3,215.4,91.9z" />
+                                <path class="st1" d="M213.8,106.8c4.1,0,8.2,0,12.4,0c0.7,1.3,1.5,2.6,2.2,3.9c0.2,0.3,0.3,0.6,0.4,0.9c0.3,1-0.4,2.2-1.4,2.6
+                                    c-0.3,0.1-0.5,0.1-0.8,0.1c-4.4,0-8.8,0-13.2,0c-0.6,0-1.1-0.2-1.6-0.6c-0.5-0.5-0.8-1.4-0.6-2.1c0.1-0.3,0.2-0.5,0.4-0.8
+                                    C212.3,109.4,213.1,108.1,213.8,106.8z" />
+                            </g>
+                        </a>
+                        <a href="./processing" id="link-to-processing" target="_top" title="processing">
+                            <g id="ProcessPath">
+                                <path class="st14" d="M211.7,165L184,141.6c-4.4,16.4-15.5,30.1-30.1,38.1l-1.1,36.3l28.3,21.5c31.9-16.2,56-45.6,65-81.1L211.7,165
+                                    z" />
+                                <path class="st1" d="M179.4,172.2c0.1,0,0.2,0,0.4,0c7,0,14,0,21,0c0.3,0,0.6,0,0.8,0.1c0.5,0.2,0.7,0.7,0.7,1.2
+                                    c0,4.3,0,8.6,0,12.8c0,0.4-0.1,0.7-0.3,1c-0.3,0.3-0.7,0.5-1.1,0.5c-7.1,0-14.1,0-21.2,0c-0.4,0-0.9-0.2-1.1-0.6
+                                    c-0.2-0.3-0.3-0.6-0.3-0.9c0-4.3,0-8.5,0-12.8c0-0.4,0.1-0.8,0.4-1C178.9,172.4,179.1,172.3,179.4,172.2z M184.3,178
+                                    c-0.3,0-0.7,0.2-1,0.4c-0.2,0.1-0.3,0.4-0.4,0.6c-0.4,0.6-0.4,1.4,0,2.1c0.4,0.6,1,0.9,1.6,1c0.5,0,1-0.1,1.4-0.4
+                                    c0.1-0.1,0.2-0.1,0.3-0.3c0.3-0.5,0.5-1.1,0.4-1.6c-0.1-0.6-0.5-1.2-1.1-1.5C185.2,178,184.8,178,184.3,178z M195.4,178
+                                    c-0.4,0.1-0.9,0.2-1.2,0.5c-0.3,0.4-0.5,0.8-0.5,1.3c-0.1,1,0.7,2,1.6,2.1c0.6,0.1,1.2-0.1,1.7-0.4c0.2-0.1,0.3-0.3,0.4-0.4
+                                    c0.3-0.5,0.4-1.1,0.2-1.6c-0.1-0.4-0.3-0.7-0.6-1C196.5,178.1,195.9,177.9,195.4,178z M189.8,178c-0.3,0-0.5,0.1-0.8,0.3
+                                    c-0.2,0.1-0.4,0.2-0.5,0.4c-0.4,0.6-0.5,1.3-0.3,1.9c0.2,0.6,0.6,1,1.2,1.3c0.6,0.3,1.3,0.1,1.9-0.2c0.1-0.1,0.3-0.1,0.4-0.3
+                                    c0.3-0.4,0.5-0.9,0.4-1.5c0-0.7-0.5-1.5-1.2-1.8C190.6,178,190.2,178,189.8,178z" />
+                                <path class="st1" d="M184.3,179.1c0.3-0.1,0.6,0,0.9,0.1c0.2,0.1,0.3,0.3,0.3,0.5c0.1,0.3,0,0.7-0.3,1c-0.4,0.4-1.3,0.2-1.5-0.4
+                                    C183.6,179.9,183.9,179.3,184.3,179.1z" />
+                                <path class="st1" d="M189.9,179.1c0.4-0.2,0.9,0.1,1.1,0.5c0.1,0.3,0.1,0.6,0,0.9c-0.2,0.3-0.5,0.4-0.8,0.4c-0.3,0-0.5-0.2-0.6-0.4
+                                    c-0.2-0.3-0.3-0.7-0.1-1C189.4,179.3,189.7,179.2,189.9,179.1z" />
+                                <path class="st1" d="M195.3,179.1c0.3-0.1,0.7,0,1,0.2c0.2,0.2,0.3,0.5,0.3,0.7c0,0.4-0.4,0.8-0.8,0.9c-0.3,0-0.6-0.1-0.8-0.3
+                                    c-0.2-0.2-0.3-0.5-0.2-0.8C194.8,179.5,195,179.2,195.3,179.1z" />
+                                <path class="st1" d="M186.8,189c0.9,0,1.7,0,2.6,0c1.3,0,2.7,0,4,0c0.2,0,0.5,0.1,0.5,0.4c0.3,0.9,0.6,1.9,0.9,2.8
+                                    c0.1,0.2,0.1,0.4,0.3,0.6c0.1,0.1,0.3,0.1,0.4,0.1c0.7,0,1.4,0,2.1,0c0.2,0,0.4,0,0.5,0.2c0.3,0.3,0.1,0.7-0.2,0.8
+                                    c-0.1,0-0.2,0-0.3,0c-5,0-10.1,0-15.1,0c-0.3,0-0.6-0.3-0.5-0.6c0-0.3,0.3-0.5,0.6-0.5c0.7,0,1.5,0,2.2,0c0.3,0,0.5-0.2,0.6-0.4
+                                    c0.3-0.9,0.6-1.9,0.9-2.8c0.1-0.2,0.1-0.3,0.2-0.5C186.5,189,186.7,189,186.8,189z" />
+                            </g>
+                        </a>
+                        <a href="./analysing" id="link-to-analysing" target="_top" title="analysing">
+                            <g id="AnalysePath">
+                                <path class="st13" d="M149,218.3l1-36.2c-7.5,3.3-15.8,5.1-24.5,5.1c-8.5,0-16.6-1.7-24-4.9l-29.1,21.8l0.9,35.5
+                                    c15.9,7.3,33.6,11.4,52.2,11.4c18.4,0,36-4,51.7-11.1L149,218.3z" />
+                                <path class="st1" d="M123.3,196c1.4,0,2.8,0,4.3,0c0.5,0,0.8,0.4,0.8,0.8c0,7.2,0,14.3,0,21.5c0,0.2-0.1,0.5-0.2,0.7
+                                    c-0.2,0.2-0.4,0.3-0.6,0.3c-1.4,0-2.8,0-4.1,0c-0.3,0-0.5-0.1-0.7-0.3c-0.1-0.2-0.2-0.4-0.2-0.6c0-7.2,0-14.3,0-21.5
+                                    C122.5,196.4,122.8,196,123.3,196z" />
+                                <path class="st1" d="M114.6,202.5c0.2,0,0.3,0,0.5,0c1.2,0,2.4,0,3.6,0c0.2,0,0.4,0,0.5,0.1c0.3,0.1,0.5,0.3,0.5,0.6
+                                    c0,0.1,0,0.3,0,0.4c0,5,0,9.9,0,14.9c0,0.5-0.4,0.9-0.8,0.9c-1.3,0-2.6,0-3.9,0c-0.2,0-0.4,0-0.6-0.1c-0.3-0.1-0.5-0.4-0.5-0.8
+                                    c0-5,0-10,0-15.1C114,202.9,114.2,202.6,114.6,202.5z" />
+                                <path class="st1" d="M106.3,208.7c1.4,0,2.9,0,4.3,0c0.4,0,0.8,0.4,0.8,0.8c0,2.9,0,5.8,0,8.8c0,0.3-0.1,0.6-0.4,0.8
+                                    c-0.2,0.1-0.4,0.2-0.5,0.2c-1.2,0-2.5,0-3.7,0c-0.3,0-0.6,0-0.8-0.1c-0.3-0.1-0.4-0.5-0.4-0.8c0-2.8,0-5.7,0-8.5
+                                    c0-0.2,0-0.4,0.1-0.6C105.6,209,105.9,208.7,106.3,208.7z" />
+                            </g>
+                        </a>
+                        <a href="./preserving" id="link-to-preserving" target="_top" title="preserving">
+                            <g id="PreservePath">
+                                <path class="st12" d="M67.6,201.7l29-21.8c-14.7-7.8-25.8-21.4-30.4-37.8L31,133L3.8,155.8c8.8,35.5,32.8,65.1,64.7,81.4L67.6,201.7
+                                    z" />
+                                <path class="st1" d="M48.4,150.2c1.8,0,3.6,0.1,5.3,0.4c1,0.2,2.1,0.5,3.1,0.9c0.6,0.3,1.2,0.6,1.7,1c0.3,0.3,0.5,0.6,0.6,1
+                                    c0,0.4-0.1,0.7-0.3,1c-0.3,0.4-0.8,0.8-1.3,1c-0.8,0.4-1.7,0.7-2.5,0.9c-1.4,0.4-2.9,0.5-4.4,0.6c-2.3,0.1-4.7,0-7-0.5
+                                    c-1-0.2-1.9-0.5-2.8-0.9c-0.6-0.3-1.1-0.6-1.5-1.1c-0.2-0.3-0.4-0.7-0.4-1c0-0.4,0.3-0.8,0.6-1.1c0.7-0.6,1.5-0.9,2.4-1.2
+                                    c1.2-0.4,2.5-0.6,3.8-0.8C46.6,150.3,47.5,150.3,48.4,150.2z" />
+                                <path class="st1" d="M38.9,157.1c1.2,0.8,2.6,1.2,4,1.5c2.1,0.5,4.3,0.6,6.4,0.6c1,0,2-0.1,3.1-0.2c2-0.2,4-0.6,5.8-1.4
+                                    c0.4-0.2,0.7-0.3,1-0.6c0,1.4,0,2.8,0,4.2c0,0.3-0.1,0.7-0.3,0.9c-0.3,0.4-0.7,0.7-1.2,0.9c-0.3,0.2-0.5,0.3-0.8,0.4
+                                    c-1.6,0.6-3.3,0.9-4.9,1.1c-1.9,0.2-3.8,0.2-5.7,0c-1.3-0.1-2.5-0.3-3.7-0.7c-1-0.3-2-0.6-2.8-1.3c-0.3-0.3-0.7-0.6-0.8-1
+                                    c0-0.1,0-0.3,0-0.4C38.9,159.8,38.9,158.4,38.9,157.1z" />
+                                <path class="st1" d="M38.9,164.8c0.5,0.3,1,0.5,1.6,0.8c1.9,0.7,3.9,1.1,5.9,1.2c1.9,0.1,3.7,0.1,5.6,0c1.9-0.2,3.9-0.5,5.7-1.2
+                                    c0.5-0.2,1.1-0.5,1.6-0.8c0,1.4,0,2.8,0,4.2c0,0.2,0,0.3-0.1,0.5c-0.1,0.4-0.4,0.6-0.7,0.9c-0.7,0.6-1.6,0.9-2.4,1.2
+                                    c-0.6,0.2-1.3,0.4-1.9,0.5c-1.1,0.2-2.2,0.3-3.3,0.4c-0.9,0.1-1.8,0-2.7,0c-1.8-0.1-3.6-0.3-5.4-0.7c-1-0.3-2.1-0.7-3-1.4
+                                    c-0.3-0.2-0.5-0.5-0.7-0.8c-0.1-0.3-0.1-0.6-0.1-0.8C38.9,167.4,38.9,166.1,38.9,164.8z" />
+                            </g>
+                        </a>
+                        <a href="./sharing" id="link-to-sharing" target="_top" title="sharing">
+                            <g id="SharePath">
+                                <path class="st17" d="M29.8,127.8l35.1,9c-0.7-3.7-1.1-7.5-1.1-11.4c0-13.4,4.3-25.9,11.6-36L60.6,56.3l-34.8-7
+                                    C9.6,70.4,0,96.8,0,125.5c0,8.6,0.9,17,2.5,25.1L29.8,127.8z" />
+                                <path class="st1" d="M42.7,75c0.7-0.1,1.5-0.1,2.2,0.3c1,0.4,1.7,1.3,2,2.3c0.2,0.6,0.1,1.4-0.1,2c-0.4,1.1-1.3,2-2.4,2.4
+                                    c-0.4,0.1-0.8,0.1-1.3,0.1c-0.6-0.1-1.1-0.2-1.6-0.5c-1.1,0.6-2.2,1.2-3.3,1.8c-0.2,0.1-0.3,0.2-0.5,0.3c-0.8,0.4-1.5,0.9-2.3,1.3
+                                    c0.1,0.4,0.2,0.8,0.2,1.2c0,0.4-0.1,0.8-0.2,1.1c0.8,0.4,1.5,0.9,2.3,1.3c0.2,0.1,0.3,0.2,0.5,0.3c1,0.6,2,1.1,3,1.7
+                                    c0.5-0.4,1.1-0.7,1.8-0.7c0.8-0.1,1.6,0.1,2.3,0.5c1,0.6,1.7,1.7,1.7,2.8c0,0.7-0.1,1.4-0.4,1.9c-0.3,0.6-0.8,1.1-1.4,1.4
+                                    c-0.3,0.2-0.7,0.3-1,0.4c-0.6,0.1-1.3,0.1-1.9-0.2c-0.5-0.2-0.9-0.4-1.3-0.8c-0.6-0.5-1-1.3-1.1-2.1c-0.1-0.6,0-1.2,0.2-1.8
+                                    c-0.7-0.4-1.4-0.8-2.2-1.2c-0.4-0.2-0.7-0.4-1-0.5c-0.8-0.5-1.7-0.9-2.5-1.4c-0.5,0.4-1.1,0.7-1.7,0.8c-0.8,0.2-1.7,0-2.5-0.4
+                                    c-0.6-0.4-1.1-0.9-1.4-1.5c-0.4-0.7-0.5-1.5-0.3-2.3c0.1-0.6,0.4-1.1,0.7-1.6c0.4-0.5,1-0.9,1.7-1.2c0.6-0.2,1.3-0.3,2-0.1
+                                    c0.6,0.1,1.1,0.4,1.5,0.8c1.1-0.6,2.2-1.2,3.3-1.8c0.1-0.1,0.3-0.1,0.4-0.2c0.7-0.4,1.4-0.8,2.2-1.2c-0.7-1.3-0.4-3.1,0.7-4.1
+                                    C41.4,75.5,42,75.2,42.7,75z" />
+                            </g>
+                        </a>
+                        <a href="./reusing" id="link-to-reusing" target="_top" title="reusing">
+                            <g id="ReusePath">
+                                <path class="st10" d="M63.9,52.1l14.9,33.1c10.7-12.4,26.2-20.5,43.6-21.3l16.7-32.3L122.9,0C85.3,0.8,51.7,18.1,29.2,45L63.9,52.1z
+                                    " />
+                                <path class="st1" d="M92.5,17.4c2-0.9,4.1-1.3,6.3-1.3c0.2,0,0.4,0.1,0.5,0.3c0.2,0.2,0.2,0.6,0,0.8c-0.1,0.2-0.4,0.3-0.6,0.4
+                                    c-0.4,0.2-0.8,0.3-1.1,0.5c-0.3,0.2-0.6,0.3-0.9,0.5c-0.6,0.4-1.2,0.8-1.7,1.2c-0.8,0.7-1.5,1.4-2,2.3c-1,1.5-1.6,3.2-1.8,5
+                                    c1.1,0,2.2,0,3.3,0c0.3,0,0.5,0.1,0.6,0.4c0.1,0.2,0.1,0.4,0,0.6c-0.1,0.2-0.3,0.4-0.5,0.6c-1.9,2.1-3.9,4.3-5.8,6.4
+                                    c-0.2,0.2-0.5,0.3-0.8,0.2c-0.1-0.1-0.2-0.2-0.3-0.3c-1.9-2.1-3.9-4.3-5.8-6.5c-0.2-0.2-0.5-0.5-0.4-0.8c0-0.4,0.3-0.7,0.7-0.7
+                                    c1.1,0,2.3,0,3.4,0c0.2-1.9,0.8-3.7,1.8-5.2C88.7,20,90.5,18.4,92.5,17.4z" />
+                                <path class="st1" d="M104.5,19.1c0.3-0.3,0.8-0.3,1,0c2,2.2,3.9,4.4,5.9,6.5c0.2,0.2,0.5,0.5,0.4,0.8c0,0.4-0.4,0.7-0.7,0.7
+                                    c-1.1,0-2.3,0-3.4,0c-0.2,2.3-1.1,4.4-2.5,6.2c-1.3,1.7-3.2,3-5.2,3.8c-0.6,0.2-1.2,0.4-1.8,0.6c-1.2,0.3-2.4,0.4-3.7,0.4
+                                    c-0.4,0-0.7-0.5-0.6-0.9c0.1-0.1,0.1-0.3,0.3-0.4c0.5-0.3,1.1-0.5,1.6-0.8c0.6-0.4,1.3-0.7,1.9-1.2c0.9-0.7,1.7-1.5,2.4-2.4
+                                    c0.5-0.7,0.9-1.5,1.3-2.3c0.4-1,0.7-2,0.8-3.1c-1.1,0-2.3,0-3.5,0c-0.4,0-0.8-0.4-0.7-0.8c0-0.3,0.3-0.5,0.5-0.8
+                                    C100.6,23.4,102.6,21.2,104.5,19.1z" />
+                            </g>
+                        </a>
+                        <text transform="matrix(1 0 0 1 16.4197 111.8653)" class="st1 st8 st9">Share</text>
+                        <text transform="matrix(1 0 0 1 76.3974 53.4992)" class="st1 st8 st9">Reuse</text>
+                        <text transform="matrix(1 0 0 1 19.2957 187.4998)" class="st1 st8 st9">Preserve</text>
+                        <text transform="matrix(1 0 0 1 90.1372 234.4302)" class="st1 st8 st9">Analyse</text>
+                        <text transform="matrix(1 0 0 1 162.3473 208.6529)" class="st1 st8 st9">Process</text>
+                        <text transform="matrix(1 0 0 1 159.7342 61.5168)" class="st1 st8 st9">Plan</text>
+                        <text transform="matrix(1 0 0 1 197.0817 128.9797)" class="st1 st8 st9">Collect</text>
+                    </svg>
+                </li>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Your role</a>
+            <ul class="list-unstyled">
+                <li class="active">    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/researcher.html">Researcher</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_steward_policy.html">Data steward policy</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_steward_research.html">Data steward research</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html">Data steward infrastructure</a>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Your domain</a>
+            <ul class="list-unstyled">
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/plant_sciences.html">Plant sciences</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/marine_metagenomics.html">Marine metagenomics</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/human_data.html">Human data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/biomolecular_simulation_data.html">Biomolecular simulation data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html">Intrinsically disordered proteins</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/microbial_biotechnology.html">Microbial biotechnology</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/epitranscriptome_data.html">Epitranscriptome data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/proteomics.html">Proteomics</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/toxicology_data.html">Toxicology data</a>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Your tasks</a>
+            <ul class="list-unstyled">
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/compliance_monitoring.html">Compliance monitoring</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_analysis.html">Data analysis</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_management_plan.html">Data management plan</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_organisation.html">Data organisation</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_protection.html">Data protection</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_publication.html">Data publication</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_quality.html">Data quality</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/storage.html">Data storage</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_transfer.html">Data transfer</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/metadata_management.html">Documentation and metadata</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/existing_data.html">Existing data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/identifiers.html">Identifiers</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/licensing.html">Licensing</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/machine_actionability.html">Machine actionability</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/sensitive_data.html">Sensitive data</a>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/tool_assembly.html">Tool assembly</a>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/national_resources.html">National resources</a>
+        </li>
+        <li class="mt-3">    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/all_tools_and_resources.html">All tools and resources</a>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/all_training_resources.html">All training resources</a>
+        </li>
+    </ul>
+    <script>$("li.active").parents('li').toggleClass("active parent");</script>
+</nav>
+
+            </div>
+            <!-- Content Column -->
+            <div class="col-lg-9">
+                <main id="main" class="mb-5">
+    <h1 class="d-flex justify-content-between">Researcher
+        <div class="d-flex align-items-center">
+            <div class="btn-group">
+                <a role="button" data-bs-toggle="tooltip" title="Propose changes to this page on GitHub"  href="https://github.com/bedroesb/rdmkit/blob/master/pages/your_role/researcher.md" class="btn hover-primary text-primary"><i class="fas fa-pencil-alt"></i></a>
+                <a role="button" data-bs-toggle="tooltip" title="Check out the history of this page" href="https://github.com/bedroesb/rdmkit/commits/master/pages/your_role/researcher.md" class="btn hover-primary text-primary"><i class="fas fa-history"></i></a>
+            </div>
+            <span class="text-muted fs-6">14-Dec-21</span>
+        </div>
+    </h1><script>
+  $(document).ready(function () {
+    $('#toc').toc({ minimumHeaders: 2, listType: 'ul', showSpeed: 0, headers: 'h2' , title: '' });
+  });
+</script>
+<div class="col-12 col-sm-7 col-xl-5">
+  <div id="toc" class="bg-light p-3 rounded my-4"></div>
+</div>
+
+    <h2 id="applies-to">Applies to</h2>
+<p>PhD candidates, research grant applicants, project managers, group leaders, PIs</p>
+
+<h2 id="scenario">Scenario</h2>
+<p>The funding organisation I am applying to requires a data management plan (DMP). I have little experience in writing a DMP, and I am not sure of the level of detail I am required to provide. I have limited access to data management experts within my institution. I am considering using the RDMkit for my data management needs. I also hope to find useful references to local training about data management requirements, data archives and DMP tools.</p>
+
+<p>I know the types and the approximate amount of data I will generate, but I have not thought about how to share data with my collaborators and how to store data securely. Initially, my plan was to buy a powerful computer and portable hard drive, but I am now thinking that I need to use a national computing infrastructure. The field I work in has well defined data and curation standards, for example, capturing information (metadata) about how to collect and sample my data. However, I am not yet familiar with the importance of storing provenance data, such as tool and database versions used in analysis.</p>
+
+<h2 id="focus">Focus</h2>
+
+<ul>
+  <li>Write data management plans, also in the context of grant applications</li>
+  <li>Ensure compliance with institution policy, including legal and ethical aspects</li>
+  <li>Ensure proper data organisation and storage</li>
+  <li>Ensure secure sharing, reproducibility and preservation of data</li>
+  <li>Transmits the good practices in RDM to his group</li>
+</ul>
+
+<h2 id="getting-started">Getting started</h2>
+
+<ul>
+  <li>Check out the various steps of the <a href="index">RDM life cycle</a>, in particular the <a href="planning">planning</a> stage</li>
+  <li>Identify and contact the data steward in your local organisation or your national contact in the <a href="https://elixir-europe.org/about-us/how-funded/eu-projects/converge/wp1/dm-coordinators">ELIXIR</a> network</li>
+  <li>Start planning your project taking the <a href="data_management_plan">DMP</a> into account</li>
+</ul>
+
+
+    
+    
+<!-- More information -->
+<h2>More information</h2>
+
+<div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+    <!-- Related pages -->
+    <div class="col">
+        <div class="card h-100 info-card bg-light">
+            <div class="card-header bg-dark fw-bold text-white">Related RDMkit pages in "Your tasks"</div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/compliance_monitoring.html"><span>Compliance monitoring & measurement</span><br><small class="text-muted">Measure compliance to data management regulations and standards.</small></a>
+                    </li>
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/data_analysis.html"><span>Data analysis</span><br><small class="text-muted">How to make data analysis fair.</small></a>
+                    </li>
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/data_management_plan.html"><span>Data management plan</span><br><small class="text-muted">How to write a data management plan (dmp).</small></a>
+                    </li>
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/data_organisation.html"><span>Data organisation</span><br><small class="text-muted">Best practices to name and organise research data.</small></a>
+                    </li>
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/data_publication.html"><span>Data publication</span><br><small class="text-muted">Prepare data and find repositories for publication.</small></a>
+                    </li>
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/data_quality.html"><span>Data quality</span><br><small class="text-muted">Ensure high quality research data.</small></a>
+                    </li>
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/existing_data.html"><span>Existing data</span><br><small class="text-muted">How to find and reuse existing data.</small></a>
+                    </li>
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/metadata_management.html"><span>Documentation and metadata</span><br><small class="text-muted">How to document and describe your data.</small></a>
+                    </li>
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/identifiers.html"><span>Identifiers</span><br><small class="text-muted">How to use identifiers for research data.</small></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Training -->
+    <div class="col">
+        <div class="card h-100 info-card bg-light">
+            <div class="card-header bg-dark fw-bold text-white">Training</div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="https://tess.elixir-europe.org/search?q=Data%20Management%20Planning#materials">
+                            <div class="row g-1">
+                                <div class="col-2 d-flex align-items-center justify-content-center">
+                                    <img alt="TeSS logo" class="img-fluid h-75" src="assets/img/tess_logo.svg">
+                                </div>
+                                <div class="col-10 d-flex align-items-center">
+                                    <span class="text-start">Training in TeSS</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tool table -->
+<h2>Relevant tools and resources</h2>
+
+<a class="visually-hidden-focusable" href='#skip-tool-table'>Skip tool table</a>
+<div class="table-responsive mt-4 mb-5">
+    <table id="tooltable" class="table display">
+        <thead>
+            <tr>
+                <th>Tool or resource<a data-bs-toggle="tooltip" data-bs-original-title="This is a curated list which means that not all tools or resources that exist for this topic are listed here. This is mainly because we do not intend to be a registry. In most cases you will only find back the tools or resources that are mentioned in this page.">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </th>
+                <th>Description</th>
+                <th>Related pages</th>
+                <th>Registry<a data-bs-toggle="tooltip" data-bs-original-title="Links to related information in ELIXIR registries: related policies and standards in FAIRsharing, scientific and technical descriptions of the resource in bio.tools, and related training in TeSS.">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <td><a href="https://argos.openaire.eu/splash/">Argos</a></td>
+                <td>Plan and follow your data. Bring your Data Management Plans closer to where data are generated, analysed and stored.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://arvados.org">Arvados</a></td>
+                <td>With Arvados, bioinformaticians run and scale compute-intensive workflows, developers create biomedical applications, and IT administrators manage large compute and storage resources.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://github.com/OHDSI/Atlas/wiki">Atlas</a></td>
+                <td>Free, publicly available web-based, open-source software application developed by the OHDSI community to support the design and execution of observational analyses to generate real world evidence from patient level observational data.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/transmed_assembly.html"><span class="badge default-badge">TransMed</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/atlas"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.dvyrsz"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Atlas" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://beacon-project.io/">Beacon</a></td>
+                <td>The Beacon protocol defines an open standard for genomics data discovery.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/beacon"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Beacon" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="http://bionda.mpc.ruhr-uni-bochum.de/start.php">BIONDA</a></td>
+                <td>BIONDA is a free and open-access biomarker database, which employs various text mining methods to extract structured information on biomarkers from abstracts of scientific publications
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a>
+                <a href="/pages/bedroesb/rdmkit/proteomics.html"><span class="badge default-badge">Proteomics</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/bionda"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://bmrb.io/">BMRB</a></td>
+                <td>Biological Magnetic Resonance Data Bank
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html"><span class="badge default-badge">Intrinsically disordered proteins</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/bmrb"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.bulkrenameutility.co.uk/">Bulk Rename Utility</a></td>
+                <td>File renaming software for Windows
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_organisation.html"><span class="badge default-badge">Data organisation</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a></td>
+                <td>Database of bioactive drug-like small molecules, it contains 2-D structures, calculated properties and abstracted bioactivities.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/toxicology_data.html"><span class="badge default-badge">Toxicology data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/chembl"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.m3jtpg"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=ChEMBL" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://choosealicense.com">Choose a license</a></td>
+                <td>Choose an open source license
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/licensing.html"><span class="badge default-badge">Licensing</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Choose a license" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.commonwl.org">Common Workflow Language (CWL)</a></td>
+                <td>An open standard for describing workflows that are build from command line tools
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.8y5ayx"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Common Workflow Language (CWL)" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://copo-project.org/">COPO</a></td>
+                <td>Portal for scientists to broker more easily rich metadata alongside data to public repos.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/copo"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/bsg-d001247"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://ddialliance.org/training/getting-started-new-content/create-a-codebook">Create a Codebook</a></td>
+                <td>Examples and tools to create a codebook by the Data Documentation Initiative (DDI)
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://creativecommons.org/choose/">Creative Commons License Chooser</a></td>
+                <td>It helps you choose the right Creative Commons license for your needs.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/licensing.html"><span class="badge default-badge">Licensing</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.cropontology.org">Crop Ontology</a></td>
+                <td>The Crop Ontology compiles concepts to curate phenotyping assays on crop plants, including anatomy, structure and phenotype.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.wgfrmg"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Crop Ontology" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.dcc.ac.uk/guidance/standards/metadata/list">Data Curation Centre Metadata list</a></td>
+                <td>List of metadata standards
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://data.inrae.fr/">Data INRAE</a></td>
+                <td>Dataverse for life sciences and agronomic related data
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_genomics_assembly.html"><span class="badge default-badge">Plant Genomics</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.178BmT"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://ds-wizard.org/">Data Stewardship Wizard</a></td>
+                <td>Publicly available online tool for composing smart data management plans
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/nels_assembly.html"><span class="badge default-badge">NeLS</span></a>
+                <a href="/pages/bedroesb/rdmkit/tsd_assembly.html"><span class="badge default-badge">TSD</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/Data_Stewardship_Wizard"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Data Stewardship Wizard" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://github.com/EBISPOT/DUO">Data Use Ontology</a></td>
+                <td>DUO allows to semantically tag datasets with restriction about their usage.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.5dnjs2"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Data Use Ontology" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://dataverse.org/">DATAVERSE</a></td>
+                <td>Open source research data respository software.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/ifb_assembly.html"><span class="badge default-badge">IFB</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=DATAVERSE" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ncbi.nlm.nih.gov/gap/">dbGAP</a></td>
+                <td>The database of Genotypes and Phenotypes (dbGaP) archives and distributes data from studies investigating the interaction of genotype and phenotype in Humans
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/dbgap"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.88v2k0"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.disgenet.org/">DisGeNET</a></td>
+                <td>A discovery platform containing collections of genes and variants associated to human diseases.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a>
+                <a href="/pages/bedroesb/rdmkit/toxicology_data.html"><span class="badge default-badge">Toxicology data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/disgenet"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.fssydn"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://disprot.org/">DisProt</a></td>
+                <td>A database of intrinsically disordered proteins
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html"><span class="badge default-badge">Intrinsically disordered proteins</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/disprot"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://dmp.vital-it.ch">DMP Canvas Generator</a></td>
+                <td>Questionnaire, which generates a pre-filled a DMP
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://dmplanner.athenarc.gr/">DMPlanner</a></td>
+                <td>Semi-automatically generated, searchable catalogue of resources that are relevant to data management plans.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://dmponline.dcc.ac.uk/">DMPonline</a></td>
+                <td>A free tool to write, share and export a data management plan. Built-in data management plan templates for many major funders.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=DMPonline" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://dmptool.org">DMPTool</a></td>
+                <td>Build your Data Management Plan
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://edal-pgp.ipk-gatersleben.de/">e!DAL-PGP</a></td>
+                <td>Plant Genomics and Phenomics Research Data Repository
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_genomics_assembly.html"><span class="badge default-badge">Plant Genomics</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.rf3m4g"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://easydmp.no/">EasyDMP</a></td>
+                <td>DMP creation, versioning and sharing
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ecpgr.cgiar.org/">ECPGR</a></td>
+                <td>Hub for the identification of plant genetic resources in Europe
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://elixir-europe.org/platforms/data/elixir-deposition-databases">ELIXIR Deposition Databases for Biomolecular Data</a></td>
+                <td>List of discipline-specific deposition databases recommended by ELIXIR.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/covid19_data_portal.html"><span class="badge default-badge">COVID-19 Data Portal</span></a>
+                <a href="/pages/bedroesb/rdmkit/nels_assembly.html"><span class="badge default-badge">NeLS</span></a>
+                <a href="/pages/bedroesb/rdmkit/ifb_assembly.html"><span class="badge default-badge">IFB</span></a>
+                <a href="/pages/bedroesb/rdmkit/csc_assembly.html"><span class="badge default-badge">CSC</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/bsg-c000039"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ebi.ac.uk/ols/index">EMBL-EBI Ontology Lookup Service</a></td>
+                <td>EMBL-EBI’s web portal for finding ontologies
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=EMBL-EBI Ontology Lookup Service" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ebi.ac.uk/submission/">EMBL-EBI's data submission wizard</a></td>
+                <td>EMBL-EBI's wizard for finding the right EMBL-EBI repository for your data.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://ufal.github.io/public-license-selector/">EUDAT licence selector wizard</a></td>
+                <td>EUDAT's wizard for finding the right licence for your data or code.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/licensing.html"><span class="badge default-badge">Licensing</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://eurisco.ipk-gatersleben.de">EURISCO</a></td>
+                <td>European Search Catalogue for Plant Genetic Resources
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/eurisco"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://europepmc.org/">Europe PMC</a></td>
+                <td>Europe PMC is a repository, providing access to worldwide life sciences articles, books, patents and clinical guidelines.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/europe_pmc"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.cmw6mm"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Europe PMC" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://urgi.versailles.inra.fr/faidare/">FAIDARE</a></td>
+                <td>FAIDARE is a tool allowing to search data across dinstinct databases that implemented BrAPI.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a>
+                <a href="/pages/bedroesb/rdmkit/ifb_assembly.html"><span class="badge default-badge">IFB</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/faidare"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://fairdomhub.org">FAIRDOMHub</a></td>
+                <td>Data, model and SOPs management for projects, from preliminary data to publication, support for running SBML models etc. (public SEEK instance)
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a>
+                <a href="/pages/bedroesb/rdmkit/nels_assembly.html"><span class="badge default-badge">NeLS</span></a>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/microbial_biotechnology.html"><span class="badge default-badge">Microbial biotechnology</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.nnvcr9"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://fairsharing.org/">fairsharing</a></td>
+                <td>A curated, informative and educational resource on data and metadata standards, inter-related to databases and data policies.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/microbial_biotechnology.html"><span class="badge default-badge">Microbial biotechnology</span></a>
+                <a href="/pages/bedroesb/rdmkit/existing_data.html"><span class="badge default-badge">Existing data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.2abjs5"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=fairsharing" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://galaxyproject.org/">Galaxy</a></td>
+                <td>Open, web-based platform for data intensive biomedical research. Whether on the free public server or your own instance, you can perform, reproduce, and share complete analyses.
+                <a href="#national-resources-button" class="d-block">
+                <span class="badge text-white bg-primary"><i class="fas fa-arrow-circle-down me-2"></i>Different instances available</span>
+                </a>
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/nels_assembly.html"><span class="badge default-badge">NeLS</span></a>
+                <a href="/pages/bedroesb/rdmkit/marine_metagenomics_assembly.html"><span class="badge default-badge">Marine Metagenomics</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/ifb_assembly.html"><span class="badge default-badge">IFB</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/galaxy"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Galaxy" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://genome.crg.cat/software/geneid/index.html">GENEID</a></td>
+                <td>Geneid is an ab initio gene finding program used to predict genes along DNA sequences in a large set of organisms.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/geneid"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://datamanagement.hms.harvard.edu/analyze/electronic-lab-notebooks">Harvard Medical School – ELN Comparison Grid</a></td>
+                <td>ELN Comparison Grid by Hardvard Medical School
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/identifiers.html"><span class="badge default-badge">Identifiers</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.dcc.ac.uk/guidance/how-guides/license-research-data">How to License Research Data - DCC</a></td>
+                <td>Guidelines about how to license research data from Digital Curation Centre
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/licensing.html"><span class="badge default-badge">Licensing</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.humanmine.org/">HumanMine</a></td>
+                <td>HumanMine integrates many types of human data and provides a powerful query engine, export for results, analysis for lists of data and FAIR access via web services.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_organisation.html"><span class="badge default-badge">Data organisation</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/humanmine"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.RJ99Pj"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=HumanMine" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://lov.linkeddata.es/dataset/lov/">Linked Open Vocabularies (LOV)</a></td>
+                <td>Web portal for finding ontologies
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.lumi-supercomputer.eu/">LUMI</a></td>
+                <td>EuroHPC world-class supercomputer
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/csc_assembly.html"><span class="badge default-badge">CSC</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/lumi"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.bioversityinternational.org/e-library/publications/detail/faobioversity-multi-crop-passport-descriptors-v21-mcpd-v21/">Multi-Crop Passport Descriptor (MCPD)</a></td>
+                <td>The Multi-Crop Passport Descriptor is the metadata standard for plant genetic resources maintained ex situ by genbanks.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.hn155r"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.psidev.info/intrinsically-disordered-proteins-workgroup">MIADE</a></td>
+                <td>Minimum Information About Disorder Experiments (MIADE) standard
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html"><span class="badge default-badge">Intrinsically disordered proteins</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.miappe.org/">MIAPPE</a></td>
+                <td>Minimum Information About a Plant Phenotyping Experiment
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_genomics_assembly.html"><span class="badge default-badge">Plant Genomics</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.nd9ce9"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=MIAPPE" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="http://wiki.gensc.org/index.php?title=MIGS/MIMS">MIGS/MIMS</a></td>
+                <td>Minimum Information about a (Meta)Genome Sequence
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/marine_metagenomics.html"><span class="badge default-badge">Marine metagenomics</span></a>
+                <a href="/pages/bedroesb/rdmkit/microbial_biotechnology.html"><span class="badge default-badge">Microbial biotechnology</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.va1hck"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://gensc.org/mixs/">MIxS</a></td>
+                <td>Minimum Information about any (x) Sequence
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/marine_metagenomics.html"><span class="badge default-badge">Marine metagenomics</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_genomics_assembly.html"><span class="badge default-badge">Plant Genomics</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.9aa0zp"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=MIxS" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://mobidb.org/">MobiDB</a></td>
+                <td>A database of protein disorder and mobility annotations
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html"><span class="badge default-badge">Intrinsically disordered proteins</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/mobidb"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.jwra3e"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://github.com/szullino/XNAT-PIC">MRI2DICOM</a></td>
+                <td>a Magnetic Resonance Imaging (MRI) converter from ParaVision® (Bruker, Inc. Billerica, MA) file format to DICOM standard
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/xnat_pic_assembly.html"><span class="badge default-badge">XNAT-PIC</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://ohdsi.org/">OHDSI</a></td>
+                <td>Multi-stakeholder, interdisciplinary collaborative to bring out the value of health data through large-scale analytics. All our solutions are open-source.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a>
+                <a href="/pages/bedroesb/rdmkit/transmed_assembly.html"><span class="badge default-badge">TransMed</span></a>
+                <a href="/pages/bedroesb/rdmkit/toxicology_data.html"><span class="badge default-badge">Toxicology data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/ohdsi"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="http://www.ontobee.org">Ontobee</a></td>
+                <td>A web portal to search and visualise ontologies
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.q8fx1b"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://github.com/ISA-tools/OntoMaton">ONTOMATON</a></td>
+                <td>OntoMaton facilitates ontology search and tagging functionalities within Google Spreadsheets.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/identifiers.html"><span class="badge default-badge">Identifiers</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://opendefinition.org/licenses/">Open Definition Conformant Licenses</a></td>
+                <td>Licenses that are conformant with the principles laid out in the Open Definition.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/licensing.html"><span class="badge default-badge">Licensing</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://osf.io">OSF</a></td>
+                <td>OSF (Open Science Framework) is a free, open platform to support your research and enable collaboration.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://bioconductor.org/packages/PAA/">PAA</a></td>
+                <td>PAA is an R/Bioconductor tool for protein microarray data analysis aimed at biomarker discovery.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a>
+                <a href="/pages/bedroesb/rdmkit/proteomics.html"><span class="badge default-badge">Proteomics</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/paa"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://pcddb.cryst.bbk.ac.uk/">PCDDB</a></td>
+                <td>The Protein Circular Dichroism Data Bank
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html"><span class="badge default-badge">Intrinsically disordered proteins</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/pcddb"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.wwpdb.org/">PDB</a></td>
+                <td>The Protein Data Bank (PDB)
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html"><span class="badge default-badge">Intrinsically disordered proteins</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/pdb"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=PDB" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://github.com/mpc-bioinformatics/pia">PIA - Protein Inference Algorithms</a></td>
+                <td>PIA is a toolbox for mass spectrometrey based protein inference and identification analysis.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/proteomics.html"><span class="badge default-badge">Proteomics</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/pia"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://bioinformatics.psb.ugent.be/plaza/">PLAZA</a></td>
+                <td>Access point for plant comparative genomics, centralizing genomic data produced by different genome sequencing initiatives.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a>
+                <a href="/pages/bedroesb/rdmkit/plant_genomics_assembly.html"><span class="badge default-badge">Plant Genomics</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.wBOua0"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=PLAZA" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://rmarkdown.rstudio.com">R Markdown</a></td>
+                <td>R Markdown documents are fully reproducible. Use a productive notebook interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=R Markdown" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://rd-connect.eu/what-we-do/omics/gpap/">RD-Connect Genome Phenome Analysis Platform</a></td>
+                <td>The RD-Connect GPAP is an online tool for diagnosis and gene discovery in rare disease research.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=RD-Connect Genome Phenome Analysis Platform" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://rd-alliance.github.io/metadata-directory/standards/">RDA Standards</a></td>
+                <td>Directory of standard metadata, divided into different research areas
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://renamer.com/">Renamer4Mac</a></td>
+                <td>File renaming software for Mac
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_organisation.html"><span class="badge default-badge">Data organisation</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://repositoryfinder.datacite.org">Repository Finder</a></td>
+                <td>Repository Finder can help you find an appropriate repository to deposit your research data. The tool is hosted by DataCite and queries the re3data registry of research data repositories.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://researcheracademy.elsevier.com/research-preparation/research-data-management/creating-good-research-data-management-plan">Research Management Plan</a></td>
+                <td>Machine actionable DMPs.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Research Management Plan" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://w3id.org/ro/crate">Research Object Crate (RO-Crate)</a></td>
+                <td>RO-Crate is a lightweight approach to packaging research data with their metadata, using schema.org. An RO-Crate is a structured archive of all the items that contributed to the research outcome, including their identifiers, provenance, relations and annotations.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_organisation.html"><span class="badge default-badge">Data organisation</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/microbial_biotechnology.html"><span class="badge default-badge">Microbial biotechnology</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.wUoZKE"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://rightfield.org.uk">Rightfield</a></td>
+                <td>RightField is an open-source tool for adding ontology term selection to Excel spreadsheets
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/microbial_biotechnology.html"><span class="badge default-badge">Microbial biotechnology</span></a>
+                <a href="/pages/bedroesb/rdmkit/identifiers.html"><span class="badge default-badge">Identifiers</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/rightfield"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://rstudio.com">Rstudio</a></td>
+                <td>Rstudio notebooks allow to share code, documentation
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/rstudio"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=Rstudio" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.sasbdb.org/">SASBDB</a></td>
+                <td>Small Angle Scattering Biological Data Bank
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html"><span class="badge default-badge">Intrinsically disordered proteins</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://schemapedia.com">Schemapedia</a></td>
+                <td>Web portal for finding ontologies
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.nature.com/sdata/policies/repositories">Scientific Data's Recommended Repositories</a></td>
+                <td>List of respositories recommended by Scientific Data, contains both discipline-specific and general repositories.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="www.genevention.com/products">semares</a></td>
+                <td>All-in-one platform for life science data management, semantic data integration, data analysis and visualization
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ebi.ac.uk/pdbe/docs/sifts/">SIFTS</a></td>
+                <td>Structure integration with function, taxonomy and sequence
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html"><span class="badge default-badge">Intrinsically disordered proteins</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.talend.com/">Talend</a></td>
+                <td>Talend is an open source data integration platform.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/transmed_assembly.html"><span class="badge default-badge">TransMed</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://gensc.org/mixs/">The Genomic Standards Consortium (GSC)</a></td>
+                <td>Minimum Information about any (x) Sequence
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.9aa0zp"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="http://obofoundry.org">The Open Biological and Biomedical Ontology (OBO) Foundry</a></td>
+                <td>Collaborative effort to develob interoperable ontologies for the biological sciences
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/bsg-d001083"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://github.com/transmart">tranSMART</a></td>
+                <td>Knowledge management and high-content analysis platform enabling analysis of integrated data for the purposes of hypothesis generation, hypothesis validation, and cohort discovery in translational research.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a>
+                <a href="/pages/bedroesb/rdmkit/transmed_assembly.html"><span class="badge default-badge">TransMed</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/transmart"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://txg-mapr.eu/">TXG-MAPr</a></td>
+                <td>A tool that contains weighted gene co-expression networks obtained from the Primary Human Hepatocytes, rat kidney, and liver TG-GATEs dataset.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/toxicology_data.html"><span class="badge default-badge">Toxicology data</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/txg-mapr"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.uniprot.org/">UniProt</a></td>
+                <td>Comprehensive resource for protein sequence and annotation data
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html"><span class="badge default-badge">Intrinsically disordered proteins</span></a>
+                <a href="/pages/bedroesb/rdmkit/microbial_biotechnology.html"><span class="badge default-badge">Microbial biotechnology</span></a>
+                <a href="/pages/bedroesb/rdmkit/proteomics.html"><span class="badge default-badge">Proteomics</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/uniprot"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.s1ne3g"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=UniProt" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.data.cam.ac.uk/data-management-guide/electronic-research-notebooks/electronic-research-notebook-products">University of Cambridge - Electronic Research Notebook Products</a></td>
+                <td>List of Electronic Research Notebook Products by University of Cambridge
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/metadata_management.html"><span class="badge default-badge">Documentation and metadata</span></a>
+                <a href="/pages/bedroesb/rdmkit/identifiers.html"><span class="badge default-badge">Identifiers</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://wellcomeopenresearch.org/for-authors/data-guidelines">Wellcome Open Research - Data Guidelines</a></td>
+                <td>Wellcome Open Research requires that the source data underlying the results are made available as soon as an article is published. This page provides information about data you need to include, where your data can be stored, and how your data should be presented.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.xnat.org/">XNAT</a></td>
+                <td>Open source imaging informatics platform. It facilitates common management, productivity, and quality assurance tasks for imaging and associated data.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/transmed_assembly.html"><span class="badge default-badge">TransMed</span></a>
+                <a href="/pages/bedroesb/rdmkit/xnat_pic_assembly.html"><span class="badge default-badge">XNAT-PIC</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://github.com/szullino/XNAT-PIC">XNAT-PIC Pipelines</a></td>
+                <td>Analysing of single or multiple subjects within the same project in XNAT
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/xnat_pic_assembly.html"><span class="badge default-badge">XNAT-PIC</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://github.com/szullino/XNAT-PIC">XNAT-PIC Uploader</a></td>
+                <td>Import tool for multimodal DICOM image datasets to XNAT
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/xnat_pic_assembly.html"><span class="badge default-badge">XNAT-PIC</span></a></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr class="collapse multi-collapse bg-light" id="resource_title"><td colspan="4"><b>National resources</b></td></tr>
+            <tr class="collapse multi-collapse" id="rdm-guide">
+                
+                <td><a href="https://rdm.elixir-belgium.org">RDM Guide</a><a href="/be_resources.html"><span class="flag-icon ms-2 flag-icon-be"></span></a></td>
+                <td>RDM Guide describes Belgian data management guidelines, resources, tools and services available for researchers in Life Sciences.
+                
+                </td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td></td>
+            </tr>
+            <tr class="collapse multi-collapse" id="galaxy-belgium">
+                
+                <td><a href="https://usegalaxy.be">Galaxy Belgium</a><a href="/be_resources.html"><span class="flag-icon ms-2 flag-icon-be"></span></a></td>
+                <td>Galaxy Belgium is a Galaxy instance managed by the Belgian ELIXIR node, funded by the Flemish government, which utilizing infrastructure provided by the Flemish Supercomputer Center (VSC).
+                
+                <div class="d-block">
+                    <span class="badge text-primary border border-primary">Galaxy</span>
+                </div>
+                </td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a></td>
+                <td></td>
+            </tr>
+            <tr class="collapse multi-collapse" id="ena-upload-tool">
+                
+                <td><a href="https://github.com/usegalaxy-eu/ena-upload-cli">ENA upload tool</a><a href="/be_resources.html"><span class="flag-icon ms-2 flag-icon-be"></span></a></td>
+                <td>The program submits experimental data and respective metadata to the European Nucleotide Archive (ENA).
+                
+                </td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+                <td></td>
+            </tr>
+            <tr class="collapse multi-collapse" id="dmponline-be">
+                
+                <td><a href="https://dmponline.be">DMPonline.be</a><a href="/be_resources.html"><span class="flag-icon ms-2 flag-icon-be"></span></a></td>
+                <td>This instance of DMPonline is provided by the DMPbelgium Consortium. We can help you write and maintain data management plans for your research.
+                
+                </td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a></td>
+                <td></td>
+            </tr>
+            <tr class="collapse multi-collapse" id="pippa">
+                
+                <td><a href="https://pippa.psb.ugent.be">PIPPA</a><a href="/be_resources.html"><span class="flag-icon ms-2 flag-icon-be"></span></a></td>
+                <td>PIPPA, the PSB Interface for Plant Phenotype Analysis, is the central web interface and database that provides the tools for the management of the plant imaging robots on the one hand, and the analysis of images and data on the other hand.
+                
+                </td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/plant_sciences.html"><span class="badge default-badge">Plant sciences</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a></td>
+                <td></td>
+            </tr>
+            <tr class="collapse multi-collapse" id="belnet">
+                
+                <td><a href="https://belnet.be/en">Belnet</a><a href="/be_resources.html"><span class="flag-icon ms-2 flag-icon-be"></span></a></td>
+                <td>Belnet is the privileged partner of higher education, research and administration for connectivity. We provide high-bandwidth internet access and related services for our specific target groups.
+                
+                </td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_transfer.html"><span class="badge default-badge">Data transfer</span></a></td>
+                <td></td>
+            </tr>
+            <tr class="collapse multi-collapse" id="chipster">
+                
+                <td><a href="https://chipster.csc.fi/">Chipster</a><a href="/fi_resources.html"><span class="flag-icon ms-2 flag-icon-fi"></span></a></td>
+                <td>Chipster is a user-friendly analysis software for high-throughput data such as RNA-seq and single cell RNA-seq. It contains analysis tools and a large reference genome collection.
+                
+                </td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/csc_assembly.html"><span class="badge default-badge">CSC</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html"><span class="badge default-badge">Data steward infrastructure</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a></td>
+                <td></td>
+            </tr>
+            <tr class="collapse multi-collapse" id="dmptuuli">
+                
+                <td><a href="https://www.dmptuuli.fi/">DMPTuuli</a><a href="/fi_resources.html"><span class="flag-icon ms-2 flag-icon-fi"></span></a></td>
+                <td>Data management planning tool (Finland)
+                
+                </td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/csc_assembly.html"><span class="badge default-badge">CSC</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a></td>
+                <td></td>
+            </tr>
+            <tr class="collapse multi-collapse" id="dmp-opidor">
+                
+                <td><a href="https://dmp.opidor.fr">DMP OPIDoR</a><a href="/fr_resources.html"><span class="flag-icon ms-2 flag-icon-fr"></span></a></td>
+                <td>Online questionnaire for the development of data management plans - repository of DMPs
+                
+                </td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/ifb_assembly.html"><span class="badge default-badge">IFB</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<a class="btn btn-primary" id="national-resources-button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" role="button" aria-expanded="false" aria-controls="resource_title rdm-guide galaxy-belgium ena-upload-tool dmponline-be pippa belnet chipster dmptuuli dmp-opidor">
+    View national resources <span class="badge bg-white text-primary ms-2">9</span>
+  </a>
+<div id="skip-tool-table"></div>
+
+
+    
+<span class="d-block h2-like fs-2 text-dark">Contributors</span>
+<div class="p-4 bg-light rounded">
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/abotzki" alt="Avatar of the contributor Alexander Botzki">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/abotzki"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:alexander.botzki@vib.be"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0001-6691-4233"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Alexander Botzki"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/abotzki" alt="Avatar of the contributor Alexander Botzki">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Alexander Botzki
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Alexia Cardona">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+    </div>' title="Alexia Cardona"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Alexia Cardona">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Alexia Cardona
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/celiavg" alt="Avatar of the contributor Celia van Gelder">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/celiavg"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:celia.vangelder@dtls.nl"><i class="fas fa-envelope"></i></a></div>
+    </div>' title="Celia van Gelder"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/celiavg" alt="Avatar of the contributor Celia van Gelder">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Celia van Gelder
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/dwibberg" alt="Avatar of the contributor Daniel Wibberg">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/dwibberg"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:dwibberg@cebitec.uni-bielefeld.de"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-1331-4311"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Daniel Wibberg"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/dwibberg" alt="Avatar of the contributor Daniel Wibberg">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Daniel Wibberg
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/ehj000" alt="Avatar of the contributor Erik Hjerde">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/ehj000"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:erik.hjerde@uit.no"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-6014-1249"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Erik Hjerde"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/ehj000" alt="Avatar of the contributor Erik Hjerde">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Erik Hjerde
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/bianchini88" alt="Avatar of the contributor Federico Bianchini">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/bianchini88"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:federico.bianchini@mn.uio.no"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-9016-4820"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Federico Bianchini"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/bianchini88" alt="Avatar of the contributor Federico Bianchini">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Federico Bianchini
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Graham Hughes">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+    </div>' title="Graham Hughes"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Graham Hughes">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Graham Hughes
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Gregoire Rossier">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:gregoire.rossier@sib.swiss"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-0065-5053"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Gregoire Rossier"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Gregoire Rossier">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Gregoire Rossier
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Marko Vidak">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+    </div>' title="Marko Vidak"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Marko Vidak">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Marko Vidak
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/MijkeJetten" alt="Avatar of the contributor Mijke Jetten">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/MijkeJetten"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:m.jetten@dtls.nl"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0001-9114-2896"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Mijke Jetten"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/MijkeJetten" alt="Avatar of the contributor Mijke Jetten">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Mijke Jetten
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/minnami" alt="Avatar of the contributor Minna Ahokas">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/minnami"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:minna.ahokas@csc.fi"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0003-2313-0011"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Minna Ahokas"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/minnami" alt="Avatar of the contributor Minna Ahokas">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Minna Ahokas
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/smza" alt="Avatar of the contributor Munazah Andrabi">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/smza"><i class="fab fa-github"></i></a></div>
+    </div>' title="Munazah Andrabi"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/smza" alt="Avatar of the contributor Munazah Andrabi">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Munazah Andrabi
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Pedro Fernandes">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+    </div>' title="Pedro Fernandes"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Pedro Fernandes">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Pedro Fernandes
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/pinarpink" alt="Avatar of the contributor Pinar Alper">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/pinarpink"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-2224-0780"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Pinar Alper"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/pinarpink" alt="Avatar of the contributor Pinar Alper">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Pinar Alper
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/adlerpriit" alt="Avatar of the contributor Priit Adler">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/adlerpriit"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:adler@ut.ee"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0001-8276-5135"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Priit Adler"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/adlerpriit" alt="Avatar of the contributor Priit Adler">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Priit Adler
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/robertmand" alt="Avatar of the contributor Robert Andrews">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/robertmand"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:andrewsr9@cardiff.ac.uk"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-3491-2361"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Robert Andrews"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/robertmand" alt="Avatar of the contributor Robert Andrews">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Robert Andrews
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/siirif" alt="Avatar of the contributor Siiri Fuchs">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/siirif"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:siiri.fuchs@csc.fi"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0003-1391-9959"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Siiri Fuchs"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/siirif" alt="Avatar of the contributor Siiri Fuchs">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Siiri Fuchs
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/vdda" alt="Avatar of the contributor Victoria Dominguez D. Angel">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/vdda"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-5514-6651"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Victoria Dominguez D. Angel"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/vdda" alt="Avatar of the contributor Victoria Dominguez D. Angel">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Victoria Dominguez D. Angel
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/wna-se" alt="Avatar of the contributor Wolmar Nyberg Åkerström">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/wna-se"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:wolmar.n.akerstrom@nbis.se"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-3890-6620"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Wolmar Nyberg Åkerström"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/wna-se" alt="Avatar of the contributor Wolmar Nyberg Åkerström">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Wolmar Nyberg Åkerström
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+</div>
+
+</main>
+
+
+            </div>
+        </div>
+    </div>
+    <footer id="footer" class="bg-dark text-white">
+    <div class="container py-1 py-4">
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6">
+                <img class="company-image" width="120px;" src="/pages/bedroesb/rdmkit/assets/img/converge_logo_inverted.svg" alt="ELIXIR converge logo"/>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <ul class="mb-0">
+                    <li><a href="/pages/bedroesb/rdmkit/contributors.html">Contributors</a></li>
+                    <li><a href="https://elixir-europe.org/about-us/how-funded/eu-projects/converge">ELIXIR-CONVERGE</a></li>
+                    <li>Contributions from the 23 ELIXIR Nodes<br></li>
+                    <li><a href="/pages/bedroesb/rdmkit/support.html">Institutes, projects and funders</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <ul class="mb-0">
+                    <li><a href="/pages/bedroesb/rdmkit/about.html">About</a></li>
+                    <li><a href="/pages/bedroesb/rdmkit/contact.html">Contact</a></li>
+                    <li><a href="/pages/bedroesb/rdmkit/accessibility.html">Accessibility</a></li>
+                    <li><a href="/pages/bedroesb/rdmkit/privacy.html">Privacy</a></li>
+                </ul>
+
+            </div>
+            <div class="col-lg-3 col-sm-6 d-flex justify-content-between align-items-center">
+                <img src="/pages/bedroesb/rdmkit/assets/img/Flag_of_Europe.svg" alt="European flag" height="70px"/>
+                <img src="/pages/bedroesb/rdmkit/assets/img/RDMkit_logo_condensed_inverted.svg" alt="RDMkit logo condensed" width="88px">
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-center pt-4">
+                <p class="mb-0">Recommended in the <a href="https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/guidance/programme-guide_horizon_en.pdf">Horizon Europe Program Guide</a> as the "resource for Data Management guidelines and good practices for the Life Sciences"</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+        width="70px" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/></a>
+        <span
+        xmlns:dct="http://purl.org/dc/terms/" property="dct:title">RDMkit</span> by <a
+        xmlns:cc="http://creativecommons.org/ns#"
+        href="https://elixir-europe.org/about-us/how-funded/eu-projects/converge"
+        property="cc:attributionName" rel="cc:attributionURL">ELIXIR-CONVERGE</a> is licensed under a <a
+        rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+        Attribution 4.0 International License</a>, except where otherwise noted.
+    </div>
+</footer>
+
+    
+<!-- START Bootstrap-Cookie-Alert -->
+<div class="alert text-center cookiealert bg-dark text-white rounded-0" role="alert">
+    We use cookies to ensure you get the best experience on our website. Read our
+    <a class="text-white text-hover-primary fw-bold" href="/pages/bedroesb/rdmkit/privacy.html">privacy policy</a> to find out more.
+    <button type="button" id="acceptcookies" class="btn bg-white hover-primary ms-2" >
+        Got it!
+    </button>
+</div>
+<script>
+    /*
+     * Bootstrap Cookie Alert by Wruczek
+     * https://github.com/Wruczek/Bootstrap-Cookie-Alert
+     * Released under MIT license
+     */
+     !function(){"use strict";var n=document.querySelector(".cookiealert"),e=document.querySelector("#acceptcookies");n&&(n.offsetHeight,function(e){for(var t=e+"=",o=decodeURIComponent(document.cookie).split(";"),c=0;c<o.length;c++){for(var n=o[c];" "===n.charAt(0);)n=n.substring(1);if(0===n.indexOf(t))return n.substring(t.length,n.length)}return""}("acceptCookies")||n.classList.add("show"),e.addEventListener("click",function(){var e,t,o,c;e="acceptCookies",t=!0,o=365,(c=new Date).setTime(c.getTime()+24*o*60*60*1e3),c="expires="+c.toUTCString(),document.cookie=e+"="+t+";"+c+";path=/",n.classList.remove("show"),window.dispatchEvent(new Event("cookieAlertAccept"))}))}();
+</script>
+<!-- END Bootstrap-Cookie-Alert -->
+
+</body>
+</html>

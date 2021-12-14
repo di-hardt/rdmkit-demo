@@ -1,0 +1,1255 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Find the answers to your Research Data Management questions in Life Sciences.">
+    <meta name="keywords" content="data analysis">
+    <meta property="og:title" content="RDMkit" />
+    <meta property="og:description" content="Find the answers to your Research Data Management questions in Life Sciences." />
+    <meta property="og:image" content="//rdmkit.elixir-europe.org/assets/img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="RDMkit">
+    <meta name="msapplication-TileColor" content="#c23669">
+    <meta name="theme-color" content="#c23669">
+    <title>Toxicology data | RDMkit</title>
+    <!-- Syntax highlighting  -->
+    <link rel="stylesheet" href="/pages/bedroesb/rdmkit/assets/css/syntax.css">
+    <!-- Country flags  -->
+    <link rel="stylesheet" href="/pages/bedroesb/rdmkit/assets/css/flag-icon.min.css">
+    <!-- Font Awesome 5 Icons -->
+    <link rel="stylesheet" type="text/css" href="/pages/bedroesb/rdmkit/assets/css/all.min.css">
+    <!-- Main css file -->
+    <link rel="stylesheet" href="/pages/bedroesb/rdmkit/main.css">
+    <!-- Main font  -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- JavaScript  -->
+    <script src="/pages/bedroesb/rdmkit/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/lunr.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/anchor.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/toc.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/jquery.navgoco.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/jquery.cookie.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/main.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/search.js"></script>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/pages/bedroesb/rdmkit/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/pages/bedroesb/rdmkit/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/pages/bedroesb/rdmkit/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="/pages/bedroesb/rdmkit/assets/img/site.webmanifest">
+    <link rel="mask-icon" href="/pages/bedroesb/rdmkit/assets/img/safari-pinned-tab.svg" color="#c23669">
+    <link rel="shortcut icon" href="/pages/bedroesb/rdmkit/assets/img/favicon.ico">
+    <!-- Schema.org metadata -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "RDMkit",
+        "url": "https://github.com",
+        "about": "Find the answers to your Research Data Management questions in Life Sciences.",
+        "author": [
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0001-8850-1341",
+                "mainEntityOfPage": "https://orcid.org/0000-0001-8850-1341",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "Universitat Pompeu Fabra"
+                },
+                "email": "manuel.pastor@upf.edu",
+                "url": "https://github.com/manuelpastor",
+                "image": "https://avatars.githubusercontent.com/manuelpastor",
+                "name": "Manuel Pastor"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0003-1244-7654",
+                "mainEntityOfPage": "https://orcid.org/0000-0003-1244-7654",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "Universitat Pompeu Fabra"
+                },
+                "email": "janet.pinero@upf.edu",
+                "url": "https://github.com/jpinero",
+                "image": "https://avatars.githubusercontent.com/jpinero",
+                "name": "Janet Piñero Gonzalez"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-8509-0927",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-8509-0927",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "Universitat Pompeu Fabra"
+                },
+                "email": "juanmanuel.ramirez@upf.edu",
+                "url": "https://github.com/palilsonjmr",
+                "image": "https://avatars.githubusercontent.com/palilsonjmr",
+                "name": "Juan Manuel Ramírez-Anguita"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0002-7534-7661",
+                "mainEntityOfPage": "https://orcid.org/0000-0002-7534-7661",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "Universitat Pompeu Fabra"
+                },
+                "email": "ferran.sanz@upf.edu",
+                "name": "Ferran Sanz"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0003-0362-6298",
+                "mainEntityOfPage": "https://orcid.org/0000-0003-0362-6298",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "Universitat Pompeu Fabra"
+                },
+                "email": "miguelangel.mayer@upf.edu",
+                "url": "https://github.com/mmayerp",
+                "image": "https://avatars.githubusercontent.com/mmayerp",
+                "name": "Miguel Angel Mayer"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0003-0390-3208",
+                "mainEntityOfPage": "https://orcid.org/0000-0003-0390-3208",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "Barcelona Supercomputing Center / ELIXIR-ES"
+                },
+                "email": "laura.portell@bsc.es",
+                "url": "https://github.com/lauportell",
+                "image": "https://avatars.githubusercontent.com/lauportell",
+                "jobTitle": "editor",
+                "name": "Laura Portell Silva"
+            }
+        ]
+    }
+</script>
+
+    <!-- Google analytics -->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RXQ55EFTTH"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RXQ55EFTTH');
+</script>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+<header>
+    <a class="visually-hidden-focusable" href='#main'>Skip to content</a>
+    <a class="visually-hidden-focusable" href='#footer'>Skip to footer</a>
+    <nav class="navbar navbar-expand-lg mb-3 mb-lg-5 bg-dark navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/pages/bedroesb/rdmkit/index.html"><img alt="ELIXIR logo" src="/pages/bedroesb/rdmkit/assets/img/RDMkit_logo_inverted.svg"></a>
+            <button class="navbar-toggler text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i title="navbar-toggler" class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <!-- navigation entries -->
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/index.html">Home</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/about.html">About</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/how_to_contribute.html">Contribute</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2 d-flex align-items-center" href="https://github.com/bedroesb/rdmkit"><i class="fab fa-github me-2"></i>GitHub</a>
+                    </li>
+                    <!--start search-->
+                    <li class="nav-item ms-0 ms-lg-3 my-2 my-lg-0">
+                        <div class="position-relative">
+                            <form role="search" class="input-group">
+                                <span class="input-group-text" id="search-label"><i class="fa fa-search"></i></span><input type="search" id="search-input" class="search-input form-control" tabindex="0" placeholder="Search RDMkit" aria-label="Search RDMkit" autocomplete="off">
+                            </form>
+                            <div id="search-results" class="search-results"></div>
+                        </div>
+                    </li>
+                    <!--end search-->
+                </ul>
+            </div>
+        </div>
+        <!-- /.container -->
+    </nav>
+</header>
+
+    <!-- Page Content -->
+    <div class="container min-vh-100">
+        <!-- Content Row -->
+        <div class="row gx-0 gx-lg-5">
+            <!-- Sidebar Column -->
+            <div class="col-lg-3">
+                <button class="btn bg-light text-start d-lg-none collapsed sidebar-collapse btn w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#side-nav" aria-controls="side-nav" aria-expanded="true" aria-label="Toggle navigation">
+    Main menu <i title="navbar-toggler" class="fa fa-bars ms-2"></i>
+</button>
+<nav class="collapse" id="side-nav" aria-label="Side navigation">
+    <ul id="menu" class="menu list-unstyled mb-4 mb-lg-0">
+        
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Data life cycle</a>
+            <ul class="list-unstyled">
+                <li class="sidebar_rdm_sub">
+                
+                    <svg version="1.1" id="data-life-cycle" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250.9 251"
+                        style="enable-background:new 0 0 250.9 251;" xml:space="preserve" class="sidebar_rdm">
+                        <style type="text/css">
+                            .st10,.st12,.st13,.st14,.st15,.st16,.st17 {fill:#83858e;}
+                            .st1{fill:#FFFFFF; pointer-events: none;}
+                            .st0{fill:#FA484B;}
+                            .st5{fill:#F67028;}
+                            .st6{fill:#FAC54B;}
+                            .st4{fill:#8ABA56;}
+                            .st3{fill:#32B890;}
+                            .st2{fill:#4176A5;}
+                            .st7{fill:#9E51AD;}
+                            .st8{font-family: 'Exo 2', sans-serif;}
+                            .st9{font-size:13.5px;}
+                            .st0,.st2,.st3,.st4,.st5,.st6,.st7 {transition: fill 0.3s;}
+                            .st10:hover{fill:#FA484B;cursor: pointer;}
+                            .st15:hover{fill:#F67028;cursor: pointer;}
+                            .st16:hover{fill:#FAC54B;cursor: pointer;}
+                            .st14:hover{fill:#8ABA56;cursor: pointer;}
+                            .st13:hover{fill:#32B890;cursor: pointer;}
+                            .st12:hover{fill:#4176A5;cursor: pointer;}
+                            .st17:hover{fill:#9E51AD;cursor: pointer;}
+                            text {pointer-events : none;}
+                        </style>
+                        <a href="./planning" id="link-to-planning" target="_top" title="planning">
+                            <g id="PlanPath">
+                                <path class="st15"
+                                    d="M144.4,31.6l-16.6,32.3c17.5,0.7,33.2,8.6,44,20.9l35.7-7l14.6-32.4C199.6,18.3,166,0.8,128.2,0L144.4,31.6z" />
+                                <path class="st1"
+                                    d="M166.7,24.1c0.3-0.4,0.8-0.6,1.4-0.6c4.7,0,9.4,0,14.1,0c0.5,0,1,0.2,1.4,0.6c0.3,0.3,0.4,0.7,0.4,1.2
+                                    c0,1,0,2,0,3c-0.3,0.3-0.5,0.5-0.8,0.8c-2.6,2.6-5.3,5.3-7.9,7.9c-0.1,0.1-0.3,0.3-0.3,0.5c-0.4,1.6-0.8,3.1-1.2,4.7
+                                    c0,0.2-0.1,0.4,0,0.5c0.1,0.2,0.4,0.3,0.7,0.3c1.6-0.4,3.2-0.8,4.7-1.3c0.2,0,0.3-0.1,0.4-0.3c1.5-1.5,3-3,4.5-4.5
+                                    c0,2.5,0,5.1,0,7.6c0,0.4-0.1,0.8-0.3,1.1c-0.3,0.4-0.9,0.7-1.4,0.7c-4.7,0-9.4,0-14.1,0c-0.3,0-0.7,0-1-0.2
+                                    c-0.3-0.2-0.6-0.4-0.7-0.8c-0.1-0.3-0.2-0.6-0.2-0.9c0-6.4,0-12.8,0-19.2C166.3,24.8,166.4,24.4,166.7,24.1z" />
+                                <path class="st1" d="M185.5,28.4c0.5-0.3,1.2-0.4,1.7-0.1c0.3,0.2,0.6,0.4,0.8,0.7c0.5,0.6,0.6,1.5,0.1,2.1
+                                    c-0.1,0.2-0.3,0.4-0.5,0.5c-0.9-0.9-1.8-1.8-2.7-2.7C185.1,28.7,185.3,28.5,185.5,28.4z" />
+                                <path class="st1" d="M176.3,37.5c2.6-2.6,5.2-5.2,7.8-7.8c0.9,0.9,1.8,1.8,2.7,2.7c-2.6,2.6-5.2,5.2-7.8,7.8
+                                    C178.1,39.3,177.2,38.4,176.3,37.5z" />
+                                <path class="st1"
+                                    d="M175.8,38.6l0.1,0.1c0.7,0.7,1.3,1.3,2,2c-1,0.3-1.9,0.5-2.9,0.8C175.3,40.6,175.6,39.6,175.8,38.6z" />
+                            </g>
+                        </a>
+                        <a href="./collecting" id="link-to-collecting" target="_top" title="collecting">
+                            <g id="CollectPath">
+                                <path class="st16" d="M213.9,159.8l34.4-8.7c1.7-8.3,2.6-16.8,2.6-25.6c0-28.5-9.5-54.7-25.4-75.8L210.8,82l-35.6,7
+                                    c7.5,10.2,11.9,22.8,11.9,36.4c0,3.7-0.3,7.3-1,10.8L213.9,159.8z" />
+                                <path class="st1" d="M215.4,91.9c0.2-0.4,0.6-0.6,1.1-0.6c2.3,0,4.7,0,7,0c0.4,0,0.8,0.2,1,0.5c0.4,0.5,0.3,1.2-0.1,1.6
+                                    c-0.2,0.2-0.5,0.3-0.8,0.3c-0.2,0-0.5,0-0.7,0.1c-0.2,0.1-0.3,0.2-0.3,0.4c0,1.6,0,3.1,0,4.7c0,0.8,0.1,1.6,0.4,2.4
+                                    c0.2,0.4,0.4,0.8,0.6,1.2c0.6,1.1,1.2,2.1,1.8,3.2c-3.7,0-7.4,0-11.1,0c0.7-1.2,1.4-2.5,2-3.7c0.3-0.5,0.5-1,0.6-1.6
+                                    c0.1-0.5,0.2-1,0.2-1.5c0-1.6,0-3.2,0-4.8c0-0.3-0.3-0.5-0.5-0.5c-0.3,0-0.5,0-0.7-0.1c-0.3-0.1-0.5-0.3-0.6-0.5
+                                    C215.2,92.8,215.2,92.3,215.4,91.9z" />
+                                <path class="st1" d="M213.8,106.8c4.1,0,8.2,0,12.4,0c0.7,1.3,1.5,2.6,2.2,3.9c0.2,0.3,0.3,0.6,0.4,0.9c0.3,1-0.4,2.2-1.4,2.6
+                                    c-0.3,0.1-0.5,0.1-0.8,0.1c-4.4,0-8.8,0-13.2,0c-0.6,0-1.1-0.2-1.6-0.6c-0.5-0.5-0.8-1.4-0.6-2.1c0.1-0.3,0.2-0.5,0.4-0.8
+                                    C212.3,109.4,213.1,108.1,213.8,106.8z" />
+                            </g>
+                        </a>
+                        <a href="./processing" id="link-to-processing" target="_top" title="processing">
+                            <g id="ProcessPath">
+                                <path class="st14" d="M211.7,165L184,141.6c-4.4,16.4-15.5,30.1-30.1,38.1l-1.1,36.3l28.3,21.5c31.9-16.2,56-45.6,65-81.1L211.7,165
+                                    z" />
+                                <path class="st1" d="M179.4,172.2c0.1,0,0.2,0,0.4,0c7,0,14,0,21,0c0.3,0,0.6,0,0.8,0.1c0.5,0.2,0.7,0.7,0.7,1.2
+                                    c0,4.3,0,8.6,0,12.8c0,0.4-0.1,0.7-0.3,1c-0.3,0.3-0.7,0.5-1.1,0.5c-7.1,0-14.1,0-21.2,0c-0.4,0-0.9-0.2-1.1-0.6
+                                    c-0.2-0.3-0.3-0.6-0.3-0.9c0-4.3,0-8.5,0-12.8c0-0.4,0.1-0.8,0.4-1C178.9,172.4,179.1,172.3,179.4,172.2z M184.3,178
+                                    c-0.3,0-0.7,0.2-1,0.4c-0.2,0.1-0.3,0.4-0.4,0.6c-0.4,0.6-0.4,1.4,0,2.1c0.4,0.6,1,0.9,1.6,1c0.5,0,1-0.1,1.4-0.4
+                                    c0.1-0.1,0.2-0.1,0.3-0.3c0.3-0.5,0.5-1.1,0.4-1.6c-0.1-0.6-0.5-1.2-1.1-1.5C185.2,178,184.8,178,184.3,178z M195.4,178
+                                    c-0.4,0.1-0.9,0.2-1.2,0.5c-0.3,0.4-0.5,0.8-0.5,1.3c-0.1,1,0.7,2,1.6,2.1c0.6,0.1,1.2-0.1,1.7-0.4c0.2-0.1,0.3-0.3,0.4-0.4
+                                    c0.3-0.5,0.4-1.1,0.2-1.6c-0.1-0.4-0.3-0.7-0.6-1C196.5,178.1,195.9,177.9,195.4,178z M189.8,178c-0.3,0-0.5,0.1-0.8,0.3
+                                    c-0.2,0.1-0.4,0.2-0.5,0.4c-0.4,0.6-0.5,1.3-0.3,1.9c0.2,0.6,0.6,1,1.2,1.3c0.6,0.3,1.3,0.1,1.9-0.2c0.1-0.1,0.3-0.1,0.4-0.3
+                                    c0.3-0.4,0.5-0.9,0.4-1.5c0-0.7-0.5-1.5-1.2-1.8C190.6,178,190.2,178,189.8,178z" />
+                                <path class="st1" d="M184.3,179.1c0.3-0.1,0.6,0,0.9,0.1c0.2,0.1,0.3,0.3,0.3,0.5c0.1,0.3,0,0.7-0.3,1c-0.4,0.4-1.3,0.2-1.5-0.4
+                                    C183.6,179.9,183.9,179.3,184.3,179.1z" />
+                                <path class="st1" d="M189.9,179.1c0.4-0.2,0.9,0.1,1.1,0.5c0.1,0.3,0.1,0.6,0,0.9c-0.2,0.3-0.5,0.4-0.8,0.4c-0.3,0-0.5-0.2-0.6-0.4
+                                    c-0.2-0.3-0.3-0.7-0.1-1C189.4,179.3,189.7,179.2,189.9,179.1z" />
+                                <path class="st1" d="M195.3,179.1c0.3-0.1,0.7,0,1,0.2c0.2,0.2,0.3,0.5,0.3,0.7c0,0.4-0.4,0.8-0.8,0.9c-0.3,0-0.6-0.1-0.8-0.3
+                                    c-0.2-0.2-0.3-0.5-0.2-0.8C194.8,179.5,195,179.2,195.3,179.1z" />
+                                <path class="st1" d="M186.8,189c0.9,0,1.7,0,2.6,0c1.3,0,2.7,0,4,0c0.2,0,0.5,0.1,0.5,0.4c0.3,0.9,0.6,1.9,0.9,2.8
+                                    c0.1,0.2,0.1,0.4,0.3,0.6c0.1,0.1,0.3,0.1,0.4,0.1c0.7,0,1.4,0,2.1,0c0.2,0,0.4,0,0.5,0.2c0.3,0.3,0.1,0.7-0.2,0.8
+                                    c-0.1,0-0.2,0-0.3,0c-5,0-10.1,0-15.1,0c-0.3,0-0.6-0.3-0.5-0.6c0-0.3,0.3-0.5,0.6-0.5c0.7,0,1.5,0,2.2,0c0.3,0,0.5-0.2,0.6-0.4
+                                    c0.3-0.9,0.6-1.9,0.9-2.8c0.1-0.2,0.1-0.3,0.2-0.5C186.5,189,186.7,189,186.8,189z" />
+                            </g>
+                        </a>
+                        <a href="./analysing" id="link-to-analysing" target="_top" title="analysing">
+                            <g id="AnalysePath">
+                                <path class="st13" d="M149,218.3l1-36.2c-7.5,3.3-15.8,5.1-24.5,5.1c-8.5,0-16.6-1.7-24-4.9l-29.1,21.8l0.9,35.5
+                                    c15.9,7.3,33.6,11.4,52.2,11.4c18.4,0,36-4,51.7-11.1L149,218.3z" />
+                                <path class="st1" d="M123.3,196c1.4,0,2.8,0,4.3,0c0.5,0,0.8,0.4,0.8,0.8c0,7.2,0,14.3,0,21.5c0,0.2-0.1,0.5-0.2,0.7
+                                    c-0.2,0.2-0.4,0.3-0.6,0.3c-1.4,0-2.8,0-4.1,0c-0.3,0-0.5-0.1-0.7-0.3c-0.1-0.2-0.2-0.4-0.2-0.6c0-7.2,0-14.3,0-21.5
+                                    C122.5,196.4,122.8,196,123.3,196z" />
+                                <path class="st1" d="M114.6,202.5c0.2,0,0.3,0,0.5,0c1.2,0,2.4,0,3.6,0c0.2,0,0.4,0,0.5,0.1c0.3,0.1,0.5,0.3,0.5,0.6
+                                    c0,0.1,0,0.3,0,0.4c0,5,0,9.9,0,14.9c0,0.5-0.4,0.9-0.8,0.9c-1.3,0-2.6,0-3.9,0c-0.2,0-0.4,0-0.6-0.1c-0.3-0.1-0.5-0.4-0.5-0.8
+                                    c0-5,0-10,0-15.1C114,202.9,114.2,202.6,114.6,202.5z" />
+                                <path class="st1" d="M106.3,208.7c1.4,0,2.9,0,4.3,0c0.4,0,0.8,0.4,0.8,0.8c0,2.9,0,5.8,0,8.8c0,0.3-0.1,0.6-0.4,0.8
+                                    c-0.2,0.1-0.4,0.2-0.5,0.2c-1.2,0-2.5,0-3.7,0c-0.3,0-0.6,0-0.8-0.1c-0.3-0.1-0.4-0.5-0.4-0.8c0-2.8,0-5.7,0-8.5
+                                    c0-0.2,0-0.4,0.1-0.6C105.6,209,105.9,208.7,106.3,208.7z" />
+                            </g>
+                        </a>
+                        <a href="./preserving" id="link-to-preserving" target="_top" title="preserving">
+                            <g id="PreservePath">
+                                <path class="st12" d="M67.6,201.7l29-21.8c-14.7-7.8-25.8-21.4-30.4-37.8L31,133L3.8,155.8c8.8,35.5,32.8,65.1,64.7,81.4L67.6,201.7
+                                    z" />
+                                <path class="st1" d="M48.4,150.2c1.8,0,3.6,0.1,5.3,0.4c1,0.2,2.1,0.5,3.1,0.9c0.6,0.3,1.2,0.6,1.7,1c0.3,0.3,0.5,0.6,0.6,1
+                                    c0,0.4-0.1,0.7-0.3,1c-0.3,0.4-0.8,0.8-1.3,1c-0.8,0.4-1.7,0.7-2.5,0.9c-1.4,0.4-2.9,0.5-4.4,0.6c-2.3,0.1-4.7,0-7-0.5
+                                    c-1-0.2-1.9-0.5-2.8-0.9c-0.6-0.3-1.1-0.6-1.5-1.1c-0.2-0.3-0.4-0.7-0.4-1c0-0.4,0.3-0.8,0.6-1.1c0.7-0.6,1.5-0.9,2.4-1.2
+                                    c1.2-0.4,2.5-0.6,3.8-0.8C46.6,150.3,47.5,150.3,48.4,150.2z" />
+                                <path class="st1" d="M38.9,157.1c1.2,0.8,2.6,1.2,4,1.5c2.1,0.5,4.3,0.6,6.4,0.6c1,0,2-0.1,3.1-0.2c2-0.2,4-0.6,5.8-1.4
+                                    c0.4-0.2,0.7-0.3,1-0.6c0,1.4,0,2.8,0,4.2c0,0.3-0.1,0.7-0.3,0.9c-0.3,0.4-0.7,0.7-1.2,0.9c-0.3,0.2-0.5,0.3-0.8,0.4
+                                    c-1.6,0.6-3.3,0.9-4.9,1.1c-1.9,0.2-3.8,0.2-5.7,0c-1.3-0.1-2.5-0.3-3.7-0.7c-1-0.3-2-0.6-2.8-1.3c-0.3-0.3-0.7-0.6-0.8-1
+                                    c0-0.1,0-0.3,0-0.4C38.9,159.8,38.9,158.4,38.9,157.1z" />
+                                <path class="st1" d="M38.9,164.8c0.5,0.3,1,0.5,1.6,0.8c1.9,0.7,3.9,1.1,5.9,1.2c1.9,0.1,3.7,0.1,5.6,0c1.9-0.2,3.9-0.5,5.7-1.2
+                                    c0.5-0.2,1.1-0.5,1.6-0.8c0,1.4,0,2.8,0,4.2c0,0.2,0,0.3-0.1,0.5c-0.1,0.4-0.4,0.6-0.7,0.9c-0.7,0.6-1.6,0.9-2.4,1.2
+                                    c-0.6,0.2-1.3,0.4-1.9,0.5c-1.1,0.2-2.2,0.3-3.3,0.4c-0.9,0.1-1.8,0-2.7,0c-1.8-0.1-3.6-0.3-5.4-0.7c-1-0.3-2.1-0.7-3-1.4
+                                    c-0.3-0.2-0.5-0.5-0.7-0.8c-0.1-0.3-0.1-0.6-0.1-0.8C38.9,167.4,38.9,166.1,38.9,164.8z" />
+                            </g>
+                        </a>
+                        <a href="./sharing" id="link-to-sharing" target="_top" title="sharing">
+                            <g id="SharePath">
+                                <path class="st17" d="M29.8,127.8l35.1,9c-0.7-3.7-1.1-7.5-1.1-11.4c0-13.4,4.3-25.9,11.6-36L60.6,56.3l-34.8-7
+                                    C9.6,70.4,0,96.8,0,125.5c0,8.6,0.9,17,2.5,25.1L29.8,127.8z" />
+                                <path class="st1" d="M42.7,75c0.7-0.1,1.5-0.1,2.2,0.3c1,0.4,1.7,1.3,2,2.3c0.2,0.6,0.1,1.4-0.1,2c-0.4,1.1-1.3,2-2.4,2.4
+                                    c-0.4,0.1-0.8,0.1-1.3,0.1c-0.6-0.1-1.1-0.2-1.6-0.5c-1.1,0.6-2.2,1.2-3.3,1.8c-0.2,0.1-0.3,0.2-0.5,0.3c-0.8,0.4-1.5,0.9-2.3,1.3
+                                    c0.1,0.4,0.2,0.8,0.2,1.2c0,0.4-0.1,0.8-0.2,1.1c0.8,0.4,1.5,0.9,2.3,1.3c0.2,0.1,0.3,0.2,0.5,0.3c1,0.6,2,1.1,3,1.7
+                                    c0.5-0.4,1.1-0.7,1.8-0.7c0.8-0.1,1.6,0.1,2.3,0.5c1,0.6,1.7,1.7,1.7,2.8c0,0.7-0.1,1.4-0.4,1.9c-0.3,0.6-0.8,1.1-1.4,1.4
+                                    c-0.3,0.2-0.7,0.3-1,0.4c-0.6,0.1-1.3,0.1-1.9-0.2c-0.5-0.2-0.9-0.4-1.3-0.8c-0.6-0.5-1-1.3-1.1-2.1c-0.1-0.6,0-1.2,0.2-1.8
+                                    c-0.7-0.4-1.4-0.8-2.2-1.2c-0.4-0.2-0.7-0.4-1-0.5c-0.8-0.5-1.7-0.9-2.5-1.4c-0.5,0.4-1.1,0.7-1.7,0.8c-0.8,0.2-1.7,0-2.5-0.4
+                                    c-0.6-0.4-1.1-0.9-1.4-1.5c-0.4-0.7-0.5-1.5-0.3-2.3c0.1-0.6,0.4-1.1,0.7-1.6c0.4-0.5,1-0.9,1.7-1.2c0.6-0.2,1.3-0.3,2-0.1
+                                    c0.6,0.1,1.1,0.4,1.5,0.8c1.1-0.6,2.2-1.2,3.3-1.8c0.1-0.1,0.3-0.1,0.4-0.2c0.7-0.4,1.4-0.8,2.2-1.2c-0.7-1.3-0.4-3.1,0.7-4.1
+                                    C41.4,75.5,42,75.2,42.7,75z" />
+                            </g>
+                        </a>
+                        <a href="./reusing" id="link-to-reusing" target="_top" title="reusing">
+                            <g id="ReusePath">
+                                <path class="st10" d="M63.9,52.1l14.9,33.1c10.7-12.4,26.2-20.5,43.6-21.3l16.7-32.3L122.9,0C85.3,0.8,51.7,18.1,29.2,45L63.9,52.1z
+                                    " />
+                                <path class="st1" d="M92.5,17.4c2-0.9,4.1-1.3,6.3-1.3c0.2,0,0.4,0.1,0.5,0.3c0.2,0.2,0.2,0.6,0,0.8c-0.1,0.2-0.4,0.3-0.6,0.4
+                                    c-0.4,0.2-0.8,0.3-1.1,0.5c-0.3,0.2-0.6,0.3-0.9,0.5c-0.6,0.4-1.2,0.8-1.7,1.2c-0.8,0.7-1.5,1.4-2,2.3c-1,1.5-1.6,3.2-1.8,5
+                                    c1.1,0,2.2,0,3.3,0c0.3,0,0.5,0.1,0.6,0.4c0.1,0.2,0.1,0.4,0,0.6c-0.1,0.2-0.3,0.4-0.5,0.6c-1.9,2.1-3.9,4.3-5.8,6.4
+                                    c-0.2,0.2-0.5,0.3-0.8,0.2c-0.1-0.1-0.2-0.2-0.3-0.3c-1.9-2.1-3.9-4.3-5.8-6.5c-0.2-0.2-0.5-0.5-0.4-0.8c0-0.4,0.3-0.7,0.7-0.7
+                                    c1.1,0,2.3,0,3.4,0c0.2-1.9,0.8-3.7,1.8-5.2C88.7,20,90.5,18.4,92.5,17.4z" />
+                                <path class="st1" d="M104.5,19.1c0.3-0.3,0.8-0.3,1,0c2,2.2,3.9,4.4,5.9,6.5c0.2,0.2,0.5,0.5,0.4,0.8c0,0.4-0.4,0.7-0.7,0.7
+                                    c-1.1,0-2.3,0-3.4,0c-0.2,2.3-1.1,4.4-2.5,6.2c-1.3,1.7-3.2,3-5.2,3.8c-0.6,0.2-1.2,0.4-1.8,0.6c-1.2,0.3-2.4,0.4-3.7,0.4
+                                    c-0.4,0-0.7-0.5-0.6-0.9c0.1-0.1,0.1-0.3,0.3-0.4c0.5-0.3,1.1-0.5,1.6-0.8c0.6-0.4,1.3-0.7,1.9-1.2c0.9-0.7,1.7-1.5,2.4-2.4
+                                    c0.5-0.7,0.9-1.5,1.3-2.3c0.4-1,0.7-2,0.8-3.1c-1.1,0-2.3,0-3.5,0c-0.4,0-0.8-0.4-0.7-0.8c0-0.3,0.3-0.5,0.5-0.8
+                                    C100.6,23.4,102.6,21.2,104.5,19.1z" />
+                            </g>
+                        </a>
+                        <text transform="matrix(1 0 0 1 16.4197 111.8653)" class="st1 st8 st9">Share</text>
+                        <text transform="matrix(1 0 0 1 76.3974 53.4992)" class="st1 st8 st9">Reuse</text>
+                        <text transform="matrix(1 0 0 1 19.2957 187.4998)" class="st1 st8 st9">Preserve</text>
+                        <text transform="matrix(1 0 0 1 90.1372 234.4302)" class="st1 st8 st9">Analyse</text>
+                        <text transform="matrix(1 0 0 1 162.3473 208.6529)" class="st1 st8 st9">Process</text>
+                        <text transform="matrix(1 0 0 1 159.7342 61.5168)" class="st1 st8 st9">Plan</text>
+                        <text transform="matrix(1 0 0 1 197.0817 128.9797)" class="st1 st8 st9">Collect</text>
+                    </svg>
+                </li>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Your role</a>
+            <ul class="list-unstyled">
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/researcher.html">Researcher</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_steward_policy.html">Data steward policy</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_steward_research.html">Data steward research</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html">Data steward infrastructure</a>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Your domain</a>
+            <ul class="list-unstyled">
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/plant_sciences.html">Plant sciences</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/marine_metagenomics.html">Marine metagenomics</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/human_data.html">Human data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/biomolecular_simulation_data.html">Biomolecular simulation data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html">Intrinsically disordered proteins</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/microbial_biotechnology.html">Microbial biotechnology</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/epitranscriptome_data.html">Epitranscriptome data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/proteomics.html">Proteomics</a>
+                </li>
+                <li class="active">    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/toxicology_data.html">Toxicology data</a>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Your tasks</a>
+            <ul class="list-unstyled">
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/compliance_monitoring.html">Compliance monitoring</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_analysis.html">Data analysis</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_management_plan.html">Data management plan</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_organisation.html">Data organisation</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_protection.html">Data protection</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_publication.html">Data publication</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_quality.html">Data quality</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/storage.html">Data storage</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_transfer.html">Data transfer</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/metadata_management.html">Documentation and metadata</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/existing_data.html">Existing data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/identifiers.html">Identifiers</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/licensing.html">Licensing</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/machine_actionability.html">Machine actionability</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/sensitive_data.html">Sensitive data</a>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/tool_assembly.html">Tool assembly</a>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/national_resources.html">National resources</a>
+        </li>
+        <li class="mt-3">    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/all_tools_and_resources.html">All tools and resources</a>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/all_training_resources.html">All training resources</a>
+        </li>
+    </ul>
+    <script>$("li.active").parents('li').toggleClass("active parent");</script>
+</nav>
+
+            </div>
+            <!-- Content Column -->
+            <div class="col-lg-9">
+                <main id="main" class="mb-5">
+    <h1 class="d-flex justify-content-between">Toxicology data
+        <div class="d-flex align-items-center">
+            <div class="btn-group">
+                <a role="button" data-bs-toggle="tooltip" title="Propose changes to this page on GitHub"  href="https://github.com/bedroesb/rdmkit/blob/master/pages/your_domain/toxicology_data.md" class="btn hover-primary text-primary"><i class="fas fa-pencil-alt"></i></a>
+                <a role="button" data-bs-toggle="tooltip" title="Check out the history of this page" href="https://github.com/bedroesb/rdmkit/commits/master/pages/your_domain/toxicology_data.md" class="btn hover-primary text-primary"><i class="fas fa-history"></i></a>
+            </div>
+            <span class="text-muted fs-6">14-Dec-21</span>
+        </div>
+    </h1><script>
+  $(document).ready(function () {
+    $('#toc').toc({ minimumHeaders: 2, listType: 'ul', showSpeed: 0, headers: 'h2' , title: '' });
+  });
+</script>
+<div class="col-12 col-sm-7 col-xl-5">
+  <div id="toc" class="bg-light p-3 rounded my-4"></div>
+</div>
+
+    <h2 id="introduction">Introduction</h2>
+
+<p>Toxicology is focused on the study of the adverse effects that occur in living organisms due to their interaction with chemicals. These chemicals range from substances found in nature to those made in the laboratory for many purposes (drugs, agrochemicals, pesticides, dyes, food additives, cosmetics, household products, etc.). A part of the toxicological research is devoted to the study of the adverse effects generated by chemicals in humans, while another part is devoted to the study of the noxious effects of the chemicals in the environment. The adversity is observed for a compound at a certain concentration. Consequently, hazard characterization should always consider exposure data.
+Toxicology was traditionally an observational science that obtained an important part of its data by means of experiments carried out on animals. However, the limitations of animal models to produce human-relevant data, as well as the implementation of the 3R policies (reduction, replacement, and refinement of the animal experimentation) have motivated a change of paradigm towards a more mechanistic view. Many international initiatives are promoting this change.</p>
+
+<p>In this page, the relevant toxicological data management issues from in vitro, animal and human assays and ecotoxicology studies are explained, as well as the appropriate solutions for them. It has to be pointed out that most of the toxicology data is generated in a regulatory context, following guidelines for obtaining marketing approval and it constitutes an extremely valuable resource that should be made available to the scientific community. For that reason, efforts are being made for the systematic collection and storage of this data, as well as its standardization, which enables its integration and joint analysis.</p>
+
+<h2 id="data-from-in-vitro-assays---data-analysis-and-modelling">Data from in vitro assays - Data analysis and modelling</h2>
+
+<h3 id="description">Description</h3>
+<p>In vitro cell culture technologies are commonly used in toxicology. They provide an alternative to animal testing and allow to assess the response of the cells to toxicant exposure. They also provide unique access to biochemical, and morphological changes that can not be observed <em>in vivo</em>. The most commonly used systems are immortalized cell lines and primary cell cultures.</p>
+
+<p>Although two-dimensional cell cultures are very popular, it has been shown that they do not represent the <em>in vivo</em> situation, as they are still far from the tissue organization and the cellular connections seen in an organism. Recent advances in three-dimensional cell culture technologies have allowed the widespread use of organoids. Organoids have been used for in vitro modelling of drug adverse effects, specifically in organs commonly susceptible to drug-induced toxicities (i.e. gastrointestinal tract, liver, kidney).</p>
+
+<p>In vitro tests in toxicology typically consist of exposing in vitro cell cultures to growing concentrations of the substance under study and recording changes using a wide variety of techniques, from high-content imaging to cell death. Among the diverse sources of toxicological in vitro data it is worth mentioning the results of the Toxicology in the 21st Century program, or <a href="https://ntp.niehs.nih.gov/whatwestudy/tox21/index.html">Tox21</a>. The results of this project (data and tools) are publicly available.</p>
+
+<p>Gene expression changes that occur in biological systems in response to exposure to xenobiotics may represent mechanistically relevant cellular events contributing to the onset and progression of xenobiotic-induced adverse health outcomes. Transcriptomics data can be used to identify changes to gene expression profiles that occur in response to drug treatment which might provide predictive and mechanistic insight into the mode of action of a drug, as well as the molecular clues linked to possible toxicity.</p>
+
+<h3 id="considerations">Considerations</h3>
+
+<p>Results of in vitro assays are typically collected as dose-response curves. These results should be processed to obtain indexes indicating the concentration at which relevant effects are observed like LC50, IC50, benchmark concentration (BMC). This procedure can involve non-linear curve fitting and outlier removal. It is advisable to report the details of the data processing in order to obtain reproducible results and standarization.</p>
+
+<h3 id="solutions">Solutions</h3>
+
+<ul>
+  <li><a href="https://cran.r-project.org/web/packages/tcpl/index.html">ToxCast</a> has published an R-package with the tools used to process the high throughput chemical screening data.</li>
+  <li>Benchmark concentrations (and doses) can be computed with free software as <a href="https://www.rivm.nl/en/proast">PROAST</a> and <a href="https://www.epa.gov/bmds">BMDS</a>.</li>
+  <li>For experiments where gene expression has been measured in response to a toxicant, R packages such as <a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html">DESEq2</a> for RNA-Seq data, and <a href="https://bioconductor.org/packages/release/bioc/html/limma.html">limma</a> for microarray data are used to find genes that are differentially expressed.</li>
+  <li>In silico prediction models can be developed starting from a series of compounds annotated with the results on in vitro methods. The quality of the predictions provided by these methods are often comparable with those obtained by experimental methods, particularly when the models are used within their applicability domain. <a href="https://github.com/phi-grib/flame">Flame</a> is an open-source modelling framework developed specifically for this purpose.</li>
+</ul>
+
+<h2 id="data-from-animal-assays---existing-data-and-vocabularies">Data from animal assays - Existing data and vocabularies</h2>
+
+<h3 id="description-1">Description</h3>
+
+<p>Assays are expensive. Most animal data come from compiling normative studies which are compulsory for obtaining the approval of diverse regulatory agencies prior to commercialization. The choice of the species and strains was determined by their representability for the studied endpoints, and often defined in this legislation and comprises from invertebrate (e.g., daphnia is commonly used to study aquatic toxicity) and fish (e.g., zebrafish), to rodents (mice, rats, rabbits, guinea pigs) and mammals (dogs, primates). The representability of animal data to predict human toxicity is questionable and a precautionary approach or the use of extrapolation factors is recommended.</p>
+
+<p>In spite of their inconveniences (high costs, time consumption, requirements of significant amounts of the substance being tested, limited translatability of the observed results), in many cases, there is no suitable replacement for <em>in vivo</em> tests. The replacement of <em>in vivo</em> data for alternative approaches (often called NAM, New Approach methodologies) is an active research field.</p>
+
+<p>Two important toxicogenomics resources containing animal data are <a href="https://pubmed.ncbi.nlm.nih.gov/25313160/">TG-GATEs</a>, and <a href="https://pubmed.ncbi.nlm.nih.gov/25058030/">DrugMatrix</a>. These resources contain gene expression data in several rat tissues for a large number of compounds, in several doses and exposure times. They also include histopathology annotations and chemistry measurements.</p>
+
+<h3 id="considerations-1">Considerations</h3>
+
+<p>Data generated in normative studies were obtained under Good Laboratory Practices (GLP) conditions, and therefore the quality of the data is high. However, these studies were oriented to characterize a single compound, and not to carry out comparative analyses. Also, the doses used in the studies were designed to detect adversity and could be not representative of the exposure reached by consumers or patients of the marketed substances. Most of the time, data is not modelled using standards, for example, drugs are annotated using common names, and histopathology annotations are not coded in a controlled vocabulary.</p>
+
+<h3 id="solutions-1">Solutions</h3>
+
+<ul>
+  <li>Use information about genes, and variants associated with human adverse effects, from platforms such as <a href="https://www.disgenet.org/">DisGeNET</a>, <a href="http://ctdbase.org/">CTD</a>, and <a href="https://www.pharmgkb.org/">PharmGKB</a>.</li>
+  <li>Histopathology data requires the use of a controlled vocabulary like <a href="https://evs.nci.nih.gov/ftp1/CDISC/SEND/SEND%20Terminology.html">CDISC/SEND</a>.</li>
+  <li>The extension and curation of ontologies like CDISC/SEND to specific domains is facilitated by tools like <a href="https://opensource.nibr.com/projects/ontobrowser/">ONTOBROWSER</a>.</li>
+  <li>In order to reduce the number of animals used in toxicological studies, it has been suggested to replace control groups with historically collected data from studies carried out in comparable conditions (so-called Virtual Control Groups). VCGs are being developed by <a href="https://etransafe.eu/virtual-control-groups-one-step-forward-into-the-future-of-animal-testing-in-toxicology">eTRANSAFE project</a>.</li>
+</ul>
+
+<h2 id="data-from-human-assays---existing-data-and-vocabularies">Data from human assays - Existing data and vocabularies</h2>
+
+<h3 id="description-2">Description</h3>
+
+<p>Human response to toxic agents is generally excluded from toxicity assays as it entails major ethical issues. Although relevant information on potential adverse effects is available from animal and in vitro assays, human data is crucial for accurate calibration of toxicity models based on these studies. Traditionally, it was frequent that exposure to an unknown or unexpected toxic agent was eventually identified as the trigger factor of a health problem for which an evident reason did not apparently exist. Thereby, unintentional human exposure to toxic agents yielded toxicological data. Two main types of sources exist in this regard:</p>
+<ul>
+  <li>Individual or group case reports are a fundamental source of information when no previously reported human toxicity information exists.  They include exhaustive medical information on a single patient or a set of patients with similar symptomatology which is gathered from health care facilities to identify etiology.</li>
+  <li>Epidemiologic studies (ESs) are focused on the possible association between the exposure to a substance and the potential adverse reactions observed in a given human population. ESs are classified as occupational (individuals are exposed in the workplace), or environmental (individuals are exposed through daily living).</li>
+</ul>
+
+<p>In the pharmaceutical context though, intentional human exposure to drug candidates is a necessary step in the development of medications. During the clinical trial stage, human exposure to substances is required to characterize efficacy and safety. This process consists of several phases which are exhaustively controlled and subjected to strict regulations and ethical review. Adverse-event monitoring and reporting is a key issue in the assessment of the risk-benefit balance associated with the medication which is established from the clinical trials data. After the medication is released to the market it is subjected to an exhaustive pharmacovigilance process focused on the identification of safety concerns. Serious and non-serious adverse effects reporting from several sources are collected during a period and medication risk-benefit balance is re-evaluated.</p>
+
+<h3 id="considerations-2">Considerations</h3>
+
+<p>Data from human assays are highly heterogeneous and integration with in vitro and animal data is a challenging task. There is a broad range of resources containing human data publicly available, but sometimes data access is limited. The nature of toxicological data has evolved in recent times and available resources and repositories comprise a variety of different types of data. On one hand, many data sources are nicely structured but, on the other hand, some others provide detailed information in an unstructured format. Data should be harmonized before integration. Disparate data sources are organized differently and also use different terminologies:</p>
+<ul>
+  <li>Resources providing access to occupational epidemiologic studies report health risks by using condition-centred vocabularies like (ICD9-CM and ICD10-CM) or just uncoded terms whereas databases reporting possible links between observed adverse reactions and medications are usually expressed according to the MedDRA ontology.</li>
+  <li>Different chemical identifiers are used depending on the toxic agent.</li>
+  <li>Similarly, medication identifiers are not always consistent among different sources. This is a challenging issue as many medicinal products have different denominations and available commercial presentations depending on the country/region where the product is commercialized.</li>
+  <li>Usually, structured resources present metadata explaining how the data is organized, thus enabling an easy data transformation process. Conversely, non-structured resources are not easy to harmonize as data organization is not consistent among the available documents.</li>
+</ul>
+
+<p>Databases containing clinical toxicological data of drugs can contain the results of clinical studies (<a href="https://clinicaltrials.gov/">clinicaltrials.gov</a>), frequent adversities (Medline), or collect pharmacovigilance data (<a href="https://www.fda.gov/drugs/surveillance/questions-and-answers-fdas-adverse-event-reporting-system-faers">FAERS</a>) depending on the data being incorporated, the interpretation is different. For example, in the case of spontaneous reporting systems, the frequency with which an adverse event is reported should be considered relative to the time the compound has been in the market and the frequency of these adverse events in the population treated.</p>
+
+<h3 id="solutions-2">Solutions</h3>
+
+<p>Examples of databases containing drug toxicological data:</p>
+<ul>
+  <li><a href="https://clinicaltrials.gov/">clinicaltrials.gov</a> is a resource depending on the National Library of medicine which makes available private and public-funded clinical trials.</li>
+  <li>The <a href="https://www.fda.gov/drugs/surveillance/questions-and-answers-fdas-adverse-event-reporting-system-faers">FDA Adverse Event Reporting System (FAERS)</a> contains adverse event reports, medication error reports and product quality complaints submitted by healthcare professionals, consumers, and manufacturers.</li>
+</ul>
+
+<p>Harmonization of terminologies can be achieved by using different resources:</p>
+
+<ul>
+  <li>The <a href="https://www.nlm.nih.gov/research/umls/index.html">Unified Medical Language System (UMLS)</a> provides mappings between different medical vocabularies. It includes common ontologies within the condition/diagnosis domain like SNOMED, ICD9CM, ICD10CM, and also the MedDRA ontology.</li>
+  <li>The <a href="https://www.ohdsi.org/analytic-tools/athena-standardized-vocabularies/">OHDSI</a> initiative for health data harmonization is an alternative solution for the mapping of vocabularies needed for the harmonization of different resources. This initiative maintains the ATHENA set of vocabularies which is in constant evolution and covers relevant domains in the realm of health care. The OHDSI community is paying special attention to the mappings between medication identifiers coming from national regulatory agencies of the countries of provenance of the institutions involved in the initiative, and the RxNorm identifier which is the standard vocabulary used by OHDSI.</li>
+  <li>Resources in the context of environmental (<a href="https://www.tera.org/iter/">ITER</a>, <a href="https://www.epa.gov/iris">IRIS</a>) or occupational (<a href="https://haz-map.com/">Haz-Map</a>) toxicity using CAS Registry Number identifiers can be connected with those in the pharmaceutical field prone to use <a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> identifiers via molecular identifiers available in both resources like the standard InChI or standard InChI Key representations. Services like EBI’s <a href="https://www.ebi.ac.uk/unichem/">UniChem</a> can help to translate between different chemical identifiers.</li>
+</ul>
+
+<p>To import unstructured data sources into structured schemas is a really challenging task as it involves the application of natural language processing technologies. The development of these tools in the field of toxicology is still at the embrionary stage but several initiatives exist:</p>
+
+<ul>
+  <li>The <a href="http://limtox.bioinfo.cnio.es/">LimTox</a> system is a text mining approach devoted to the extraction of associations between chemical agents and hepatotoxicity.</li>
+  <li>The <a href="http://www.biomedicale.parisdescartes.fr/aop4EUpest/home.php">AOP4EUpest</a> webserver is a resource for the identification of annotated pesticides-biological events involved in Adverse Outcome Pathways (AOPs) via text mining approaches.</li>
+</ul>
+
+<h2 id="ecotoxicology-data---existing-data">Ecotoxicology data - Existing data</h2>
+
+<h3 id="description-3">Description</h3>
+
+<p>Substances can also be characterized according to their potential to affect the environment. This data is collected by national and international regulatory agencies (e.g., ECHA in EU and, EPA in the USA) aiming to control the production, distribution, and use of potentially hazardous substances. Data collection is largely guided by legislation, which defines the test that should be carried out and the data that should be collected.</p>
+
+<h3 id="considerations-3">Considerations</h3>
+
+<p>When considering the effect of a substance on the environment, in addition to its hazard characterization, it is important to consider its environmental fate in terrestrial and aqueous environments, and its properties with respect to degradation by diverse routes (chemical, biodegradation, photodegradation).</p>
+
+<h3 id="solutions-3">Solutions</h3>
+
+<ul>
+  <li>The <a href="https://cfpub.epa.gov/ecotox/">ECOTOXicology Knowledgebase (ECOTOX)</a> is a comprehensive, publicly available Knowledgebase providing single chemical environmental toxicity data on aquatic life, terrestrial plants, and wildlife.</li>
+  <li>The <a href="https://comptox.epa.gov/dashboard">CompTox Chemicals Dashboard</a> provides toxicological information for over 800.000 chemical compounds, including experimental and predicted fate information.</li>
+</ul>
+
+    
+    
+<!-- More information -->
+<h2>More information</h2>
+
+<div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+    <!-- Related pages -->
+    <div class="col">
+        <div class="card h-100 info-card bg-light">
+            <div class="card-header bg-dark fw-bold text-white">Related RDMkit pages in "Your tasks"</div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="d-grid">
+                        <a class="btn bg-white hover-primary text-start" href="/pages/bedroesb/rdmkit/data_analysis.html"><span>Data analysis</span><br><small class="text-muted">How to make data analysis fair.</small></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tool table -->
+<h2>Relevant tools and resources</h2>
+
+<a class="visually-hidden-focusable" href='#skip-tool-table'>Skip tool table</a>
+<div class="table-responsive mt-4 mb-5">
+    <table id="tooltable" class="table display">
+        <thead>
+            <tr>
+                <th>Tool or resource<a data-bs-toggle="tooltip" data-bs-original-title="This is a curated list which means that not all tools or resources that exist for this topic are listed here. This is mainly because we do not intend to be a registry. In most cases you will only find back the tools or resources that are mentioned in this page.">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </th>
+                <th>Description</th>
+                <th>Related pages</th>
+                <th>Registry<a data-bs-toggle="tooltip" data-bs-original-title="Links to related information in ELIXIR registries: related policies and standards in FAIRsharing, scientific and technical descriptions of the resource in bio.tools, and related training in TeSS.">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <td><a href="http://www.biomedicale.parisdescartes.fr/aop4EUpest/home.php">AOP4EUpest</a></td>
+                <td>AOP4EUpest web server is devoted to the identification of pesticides involved in an Adverse Outcome Pathway via text mining approaches.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/aop4eupest"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.cas.org/cas-data/cas-registry">CAS Registry</a></td>
+                <td>The CAS Registry (Chemical Abstracts Service Registry) includes more than 188 million unique chemicals. CAS Registry Numbers are broadly used as a unique identifier for chemical substances. The Registry is maintained by CAS, a subdivision of the American Chemical Society.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.r7Kwy7"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a></td>
+                <td>Database of bioactive drug-like small molecules, it contains 2-D structures, calculated properties and abstracted bioactivities.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/researcher.html"><span class="badge default-badge">Researcher</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/chembl"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.m3jtpg"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=ChEMBL" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a></td>
+                <td>ClinicalTrials.gov is a resource depending on the National Library of medicine which makes available private and public-funded clinical trials.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.mewhad"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://comptox.epa.gov/dashboard">Comptox</a></td>
+                <td>The CompTox Chemicals Dashboard provides toxicological information for over 800.000 chemical compounds. It is a part of a suite of databases and web applications developed by the US Environmental Protection Agency's Chemical Safety for Sustainability Research Program. These databases and apps support EPA's computational toxicology research efforts to develop innovative methods to change how chemicals are currently evaluated for potential health risks.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/comptox_chemistry_dashboard"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.tfj7gt"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="http://ctdbase.org/">CTD</a></td>
+                <td>A database that aims to advance understanding about how environmental exposures affect human health.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/ctd"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.disgenet.org/">DisGeNET</a></td>
+                <td>A discovery platform containing collections of genes and variants associated to human diseases.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a>
+                <a href="/pages/bedroesb/rdmkit/researcher.html"><span class="badge default-badge">Researcher</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/disgenet"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.fssydn"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://ntp.niehs.nih.gov/data/drugmatrix/">Drug Matrix</a></td>
+                <td>A toxicogenomic resource that provides access to the gene expression profiles of over 600 different compounds in several cell types from rats and primary rat hepatocytes.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://cfpub.epa.gov/ecotox/">ECOTOX</a></td>
+                <td>The ECOTOXicology Knowledgebase (ECOTOX) is a comprehensive, publicly available Knowledgebase providing single chemical environmental toxicity data on aquatic life, terrestrial plants, and wildlife.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.fda.gov/science-research/bioinformatics-tools/endocrine-disruptor-knowledge-base">EDKB</a></td>
+                <td>Endocrine Disruptor Knowledge Base is a platform designed to foster the development of computational predictive toxicology. This platform allows direct access to ten libraries containing the following resources: a biological activity database, QSAR training sets, in vitro and in vivo experimental data for more than 3,000 chemicals, literature citations, chemical-structure search capabilities.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ema.europa.eu/en/human-regulatory/research-development/pharmacovigilance/eudravigilance">EudraVigilance</a></td>
+                <td>The European database of suspected adverse drug reaction reports is a public resource aimed to provide access to reported suspected side-effects of drugs. Side-effects are defined according to the MedDRA ontology.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.fda.gov/drugs/surveillance/questions-and-answers-fdas-adverse-event-reporting-system-faers">FAERS</a></td>
+                <td>The FDA Adverse Event Reporting System (FAERS) is an american resource that contains adverse event reports, medication error reports and product quality complaints submitted by healthcare professionals, consumers, and manufacturers. MedDRA ontology is used for coding adverse effects. Note that reports available in FAERS do not require a causal relationship between a product and an adverse event and further evaluations are conducted by FDA to monitor the safety of products.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/faers"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ncbi.nlm.nih.gov/geo/">GEO</a></td>
+                <td>A public repository that stores microarray, next-generation sequencing, and other forms of high-throughput functional genomics data submitted by the research community.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=GEO" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://pubchem.ncbi.nlm.nih.gov/ghs/">GHS Classification</a></td>
+                <td>GHS (Globally Harmonized System of Classification and Labelling of Chemicals) classification was developed by the United Nations in an attempt to align standards and chemical regulations in different countries. GHS includes criteria for the classification of health, physical and environmental hazards, and what information should be included on labels of hazardous chemicals and safety data sheets.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://haz-map.com/">Haz-Map</a></td>
+                <td>Haz-Map is an occupational health database that makes available information about the adverse effects of exposures to chemical and biological agents at the workplace. These associations have been established using current scientific evidence.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.epa.gov/iris">IRIS</a></td>
+                <td>The Integrated Risk Information System (IRIS) resource evaluates information on health that might arise after exposure to environmental contaminants.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/iris"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=IRIS" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.tera.org/iter/">ITER</a></td>
+                <td>The International Toxicity Estimates for Risk (ITER) is a free online resource of human health risk values and cancer classifications for over 680 chemicals of environmental concern. ITER shows tabular risk data from several sources in a tabular format for easy comparison, a synopsis explaining discrepancies in data, and a link to each organization for further details.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find training for this resource" href="https://tess.elixir-europe.org/search?q=ITER" 
+                    ><span class="badge registry_badge">TeSS</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="http://limtox.bioinfo.cnio.es/">LimTox</a></td>
+                <td>The LiMTox system is a text mining approach that tries to extract associations between compounds and a particular toxicological endpoint at various levels of granularity and evidence types, all inspired by the content of toxicology reports. It integrates direct ranking of associations between compounds and hepatotoxicity through combination of heterogeneous complementary strategies from term co-mention, rules, and patterns to machine learning-based text classification. It also provides indirect associations to hepatotoxicity through the extraction of relations reflecting the effect of compounds at the level of metabolism and liver enzymes.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/limtox"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.cdc.gov/biomonitoring/">NBP</a></td>
+                <td>The National Biomonitoring Program (NBP) is a public resource that offers an assessment of nutritional status and the exposure of the U.S. population to environmental chemicals and toxic substances.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.aapcc.org/national-poison-data-system">NPDS</a></td>
+                <td>The National Poison Data System (NPDS) is a resource that provides poisson exposure occurring in the US and some freely associated states.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://ohdsi.org/">OHDSI</a></td>
+                <td>Multi-stakeholder, interdisciplinary collaborative to bring out the value of health data through large-scale analytics. All our solutions are open-source.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/researcher.html"><span class="badge default-badge">Researcher</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a>
+                <a href="/pages/bedroesb/rdmkit/transmed_assembly.html"><span class="badge default-badge">TransMed</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/ohdsi"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.pharmgkb.org/">PharmGKB</a></td>
+                <td>A resource that curates knowledge about the impact of genetic variation on drug response.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/pharmgkb"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://pharosproject.net/">Pharos</a></td>
+                <td>Pharos provides hazard, use, and exposure information on 140,872 chemicals and 180 different kinds of building products.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/pharos"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://echa.europa.eu/information-on-chemicals/registered-substances">REACH registered substances</a></td>
+                <td>Portal with public data submitted to ECHA in REACH registration dossiers by substance manufacturers, importers, or their representatives, as laid out by the REACH Regulation (see Understanding REACH regulation).
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.nlm.nih.gov/research/umls/rxnorm/index.html">RxNorm</a></td>
+                <td>RxNorm is a normalized naming system for medications that is maintained by the National Library of Medicine. Rxnorm provides unique identifiers and allows unambiguous communication of drug-related information across the American health computer systems.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/rxnorm"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find related policies and standards" href="https://fairsharing.org/FAIRsharing.36pf8q"
+                    ><span class="badge registry_badge">FAIRsharing</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="http://www.t3db.ca/">T3DB</a></td>
+                <td>The Toxin and Toxin Target Database is a bioinformatics resource that combines exhaustive toxin data with toxin target information. Currently it presents more than 42,000 toxin-target associations extracted from other databases, government documents, books and scientific literature. Each toxin record includes data on chemical properties and descriptors, toxicity values and medical information.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/t3db"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://toxico.nibiohn.go.jp/english/">TG-GATES</a></td>
+                <td>A toxicogenomics database that stores gene expression data and biochemistry, hematology, and histopathology findings derived from in vivo (rat) and in vitro (primary rat hepatocytes, primary human hepatocytes) exposure to 170 compounds at multiple dosages and time points.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/open_tg-gates"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://ntp.niehs.nih.gov/whatwestudy/tox21/toolbox/index.html">Tox21_Toolbox</a></td>
+                <td>The Toxicology in the 21st Century program, or Tox21, is a unique collaboration between several federal agencies to develop new ways to rapidly test whether substances adversely affect human health. The Tox21 Toolbox contains data-analysis tools for accessing and visualizing Tox21 quantitative high-throughput screening (qHTS) 10K library data, as well as integrating with other publicly available data.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.epa.gov/chemical-research/exploring-toxcast-data-downloadable-data">ToxCast_data</a></td>
+                <td>The Toxicology in the 21st Century program, or Tox21, is a unique collaboration between several federal agencies to develop new ways to rapidly test whether substances adversely affect human health. This portal contains diverse downloadable results of the ToxCast project.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.nlm.nih.gov/toxnet/index.html">TOXNET</a></td>
+                <td>The Toxicology Data Network (TOXNET) was a portal that allowed access to several relevant sources in the toxicological field. Nowadays, these sources have been integrated into other NLM resources.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://txg-mapr.eu/">TXG-MAPr</a></td>
+                <td>A tool that contains weighted gene co-expression networks obtained from the Primary Human Hepatocytes, rat kidney, and liver TG-GATEs dataset.
+                </td>
+                <td>
+                <a href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a href="/pages/bedroesb/rdmkit/researcher.html"><span class="badge default-badge">Researcher</span></a></td>
+                <td class="align-middle text-center">
+                <a data-bs-toggle="tooltip"
+                    data-bs-original-title="Find a scientific and technical description of the resource" href="https://bio.tools/txg-mapr"
+                    ><span class="badge registry_badge">bio.tools</span></a>
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.nlm.nih.gov/research/umls/index.html">UMLS</a></td>
+                <td>The Unified Medical Language System (UMLS) is a set of tools that establishes a mapping structure among different vocabularies in the biomedical sciences field to enable interoperativity between computer systems.
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+            <tr>
+                
+                <td><a href="https://www.ebi.ac.uk/unichem/">UniChem</a></td>
+                <td>UniChem is a very simple, large-scale non-redundant database of pointers between chemical structures and EMBL-EBI chemistry resources. Primarily, this service has been designed to maintain cross references between EBI chemistry resources. These include primary chemistry resources (ChEMBL and ChEBI), and other resources where the main focus is not small molecules, but which may nevertheless contain some small molecule information (eg: Gene Expression Atlas, PDBe).
+                </td>
+                <td></td>
+                <td class="align-middle text-center">
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="skip-tool-table"></div>
+
+
+    
+<span class="d-block h2-like fs-2 text-dark">Contributors</span>
+<div class="p-4 bg-light rounded">
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Ferran Sanz">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:ferran.sanz@upf.edu"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-7534-7661"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Ferran Sanz"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Ferran Sanz">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Ferran Sanz
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/jpinero" alt="Avatar of the contributor Janet Piñero Gonzalez">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/jpinero"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:janet.pinero@upf.edu"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0003-1244-7654"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Janet Piñero Gonzalez"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/jpinero" alt="Avatar of the contributor Janet Piñero Gonzalez">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Janet Piñero Gonzalez
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/palilsonjmr" alt="Avatar of the contributor Juan Manuel Ramírez-Anguita">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/palilsonjmr"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:juanmanuel.ramirez@upf.edu"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0002-8509-0927"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Juan Manuel Ramírez-Anguita"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/palilsonjmr" alt="Avatar of the contributor Juan Manuel Ramírez-Anguita">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Juan Manuel Ramírez-Anguita
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/lauportell" alt="Avatar of the contributor Laura Portell Silva">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/lauportell"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:laura.portell@bsc.es"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0003-0390-3208"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Laura Portell Silva"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/lauportell" alt="Avatar of the contributor Laura Portell Silva">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Laura Portell Silva
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/manuelpastor" alt="Avatar of the contributor Manuel Pastor">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/manuelpastor"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:manuel.pastor@upf.edu"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0001-8850-1341"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Manuel Pastor"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/manuelpastor" alt="Avatar of the contributor Manuel Pastor">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Manuel Pastor
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/mmayerp" alt="Avatar of the contributor Miguel Angel Mayer">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/mmayerp"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:miguelangel.mayer@upf.edu"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0003-0362-6298"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Miguel Angel Mayer"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/mmayerp" alt="Avatar of the contributor Miguel Angel Mayer">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Miguel Angel Mayer
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+</div>
+
+</main>
+
+
+            </div>
+        </div>
+    </div>
+    <footer id="footer" class="bg-dark text-white">
+    <div class="container py-1 py-4">
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6">
+                <img class="company-image" width="120px;" src="/pages/bedroesb/rdmkit/assets/img/converge_logo_inverted.svg" alt="ELIXIR converge logo"/>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <ul class="mb-0">
+                    <li><a href="/pages/bedroesb/rdmkit/contributors.html">Contributors</a></li>
+                    <li><a href="https://elixir-europe.org/about-us/how-funded/eu-projects/converge">ELIXIR-CONVERGE</a></li>
+                    <li>Contributions from the 23 ELIXIR Nodes<br></li>
+                    <li><a href="/pages/bedroesb/rdmkit/support.html">Institutes, projects and funders</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <ul class="mb-0">
+                    <li><a href="/pages/bedroesb/rdmkit/about.html">About</a></li>
+                    <li><a href="/pages/bedroesb/rdmkit/contact.html">Contact</a></li>
+                    <li><a href="/pages/bedroesb/rdmkit/accessibility.html">Accessibility</a></li>
+                    <li><a href="/pages/bedroesb/rdmkit/privacy.html">Privacy</a></li>
+                </ul>
+
+            </div>
+            <div class="col-lg-3 col-sm-6 d-flex justify-content-between align-items-center">
+                <img src="/pages/bedroesb/rdmkit/assets/img/Flag_of_Europe.svg" alt="European flag" height="70px"/>
+                <img src="/pages/bedroesb/rdmkit/assets/img/RDMkit_logo_condensed_inverted.svg" alt="RDMkit logo condensed" width="88px">
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-center pt-4">
+                <p class="mb-0">Recommended in the <a href="https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/guidance/programme-guide_horizon_en.pdf">Horizon Europe Program Guide</a> as the "resource for Data Management guidelines and good practices for the Life Sciences"</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+        width="70px" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/></a>
+        <span
+        xmlns:dct="http://purl.org/dc/terms/" property="dct:title">RDMkit</span> by <a
+        xmlns:cc="http://creativecommons.org/ns#"
+        href="https://elixir-europe.org/about-us/how-funded/eu-projects/converge"
+        property="cc:attributionName" rel="cc:attributionURL">ELIXIR-CONVERGE</a> is licensed under a <a
+        rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+        Attribution 4.0 International License</a>, except where otherwise noted.
+    </div>
+</footer>
+
+    
+<!-- START Bootstrap-Cookie-Alert -->
+<div class="alert text-center cookiealert bg-dark text-white rounded-0" role="alert">
+    We use cookies to ensure you get the best experience on our website. Read our
+    <a class="text-white text-hover-primary fw-bold" href="/pages/bedroesb/rdmkit/privacy.html">privacy policy</a> to find out more.
+    <button type="button" id="acceptcookies" class="btn bg-white hover-primary ms-2" >
+        Got it!
+    </button>
+</div>
+<script>
+    /*
+     * Bootstrap Cookie Alert by Wruczek
+     * https://github.com/Wruczek/Bootstrap-Cookie-Alert
+     * Released under MIT license
+     */
+     !function(){"use strict";var n=document.querySelector(".cookiealert"),e=document.querySelector("#acceptcookies");n&&(n.offsetHeight,function(e){for(var t=e+"=",o=decodeURIComponent(document.cookie).split(";"),c=0;c<o.length;c++){for(var n=o[c];" "===n.charAt(0);)n=n.substring(1);if(0===n.indexOf(t))return n.substring(t.length,n.length)}return""}("acceptCookies")||n.classList.add("show"),e.addEventListener("click",function(){var e,t,o,c;e="acceptCookies",t=!0,o=365,(c=new Date).setTime(c.getTime()+24*o*60*60*1e3),c="expires="+c.toUTCString(),document.cookie=e+"="+t+";"+c+";path=/",n.classList.remove("show"),window.dispatchEvent(new Event("cookieAlertAccept"))}))}();
+</script>
+<!-- END Bootstrap-Cookie-Alert -->
+
+</body>
+</html>

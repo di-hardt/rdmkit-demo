@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Find the answers to your Research Data Management questions in Life Sciences.">
+    <meta name="keywords" content="">
+    <meta property="og:title" content="RDMkit" />
+    <meta property="og:description" content="Find the answers to your Research Data Management questions in Life Sciences." />
+    <meta property="og:image" content="//rdmkit.elixir-europe.org/assets/img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="RDMkit">
+    <meta name="msapplication-TileColor" content="#c23669">
+    <meta name="theme-color" content="#c23669">
+    <title>Norway | RDMkit</title>
+    <!-- Syntax highlighting  -->
+    <link rel="stylesheet" href="/pages/bedroesb/rdmkit/assets/css/syntax.css">
+    <!-- Country flags  -->
+    <link rel="stylesheet" href="/pages/bedroesb/rdmkit/assets/css/flag-icon.min.css">
+    <!-- Font Awesome 5 Icons -->
+    <link rel="stylesheet" type="text/css" href="/pages/bedroesb/rdmkit/assets/css/all.min.css">
+    <!-- Main css file -->
+    <link rel="stylesheet" href="/pages/bedroesb/rdmkit/main.css">
+    <!-- Main font  -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- JavaScript  -->
+    <script src="/pages/bedroesb/rdmkit/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/lunr.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/anchor.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/toc.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/jquery.navgoco.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/jquery.cookie.min.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/main.js"></script>
+    <script src="/pages/bedroesb/rdmkit/assets/js/search.js"></script>
+    <!-- Include the standard DataTables bits -->
+    <link rel="stylesheet" type="text/css" href="/pages/bedroesb/rdmkit/assets/css/dataTables.bootstrap5.min.css">
+    <script type="text/javascript" charset="utf8" src="/pages/bedroesb/rdmkit/assets/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="/pages/bedroesb/rdmkit/assets/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $.fn.DataTable.ext.pager.numbers_length = 5;
+        $(document).ready(function () {
+            $('div.datatable-begin').nextUntil('div.datatable-end', 'table').addClass('display');
+            $('table.display').DataTable({
+                lengthMenu: [ [25, 50, 100, -1], [25, 50, 100, "All"] ],
+                stateSave: true,
+                searching: true,
+                language: {
+                    searchPlaceholder: "Type here..."
+                }
+            });
+        });
+    </script>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/pages/bedroesb/rdmkit/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/pages/bedroesb/rdmkit/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/pages/bedroesb/rdmkit/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="/pages/bedroesb/rdmkit/assets/img/site.webmanifest">
+    <link rel="mask-icon" href="/pages/bedroesb/rdmkit/assets/img/safari-pinned-tab.svg" color="#c23669">
+    <link rel="shortcut icon" href="/pages/bedroesb/rdmkit/assets/img/favicon.ico">
+    <!-- Schema.org metadata -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "RDMkit",
+        "url": "https://github.com",
+        "about": "Find the answers to your Research Data Management questions in Life Sciences.",
+        "author": [
+            {
+                "@type": "Person",
+                "url": "https://github.com/Nazeeefa",
+                "image": "https://avatars.githubusercontent.com/Nazeeefa",
+                "name": "Nazeefa Fatima"
+            },
+            {
+                "@type": "Person",
+                "name": "Fedrico Bianchini"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://orcid.org/0000-0003-0498-4273",
+                "mainEntityOfPage": "https://orcid.org/0000-0003-0498-4273",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "University of Bergen / ELIXIR-NO"
+                },
+                "email": "korbinian.bosl@uib.no",
+                "url": "https://github.com/korbinib",
+                "image": "https://avatars.githubusercontent.com/korbinib",
+                "jobTitle": "editor",
+                "name": "Korbinian Bösl"
+            }
+        ]
+    }
+</script>
+
+    <!-- Google analytics -->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RXQ55EFTTH"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RXQ55EFTTH');
+</script>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+<header>
+    <a class="visually-hidden-focusable" href='#main'>Skip to content</a>
+    <a class="visually-hidden-focusable" href='#footer'>Skip to footer</a>
+    <nav class="navbar navbar-expand-lg mb-3 mb-lg-5 bg-dark navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/pages/bedroesb/rdmkit/index.html"><img alt="ELIXIR logo" src="/pages/bedroesb/rdmkit/assets/img/RDMkit_logo_inverted.svg"></a>
+            <button class="navbar-toggler text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i title="navbar-toggler" class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <!-- navigation entries -->
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/index.html">Home</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/about.html">About</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/how_to_contribute.html">Contribute</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2" href="/pages/bedroesb/rdmkit/contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-0 ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link ps-2 d-flex align-items-center" href="https://github.com/bedroesb/rdmkit"><i class="fab fa-github me-2"></i>GitHub</a>
+                    </li>
+                    <!--start search-->
+                    <li class="nav-item ms-0 ms-lg-3 my-2 my-lg-0">
+                        <div class="position-relative">
+                            <form role="search" class="input-group">
+                                <span class="input-group-text" id="search-label"><i class="fa fa-search"></i></span><input type="search" id="search-input" class="search-input form-control" tabindex="0" placeholder="Search RDMkit" aria-label="Search RDMkit" autocomplete="off">
+                            </form>
+                            <div id="search-results" class="search-results"></div>
+                        </div>
+                    </li>
+                    <!--end search-->
+                </ul>
+            </div>
+        </div>
+        <!-- /.container -->
+    </nav>
+</header>
+
+    <!-- Page Content -->
+    <div class="container min-vh-100">
+        <!-- Content Row -->
+        <div class="row gx-0 gx-lg-5">
+            <!-- Sidebar Column -->
+            <div class="col-lg-3">
+                <button class="btn bg-light text-start d-lg-none collapsed sidebar-collapse btn w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#side-nav" aria-controls="side-nav" aria-expanded="true" aria-label="Toggle navigation">
+    Main menu <i title="navbar-toggler" class="fa fa-bars ms-2"></i>
+</button>
+<nav class="collapse" id="side-nav" aria-label="Side navigation">
+    <ul id="menu" class="menu list-unstyled mb-4 mb-lg-0">
+        
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Data life cycle</a>
+            <ul class="list-unstyled">
+                <li class="sidebar_rdm_sub">
+                
+                    <svg version="1.1" id="data-life-cycle" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250.9 251"
+                        style="enable-background:new 0 0 250.9 251;" xml:space="preserve" class="sidebar_rdm">
+                        <style type="text/css">
+                            .st10,.st12,.st13,.st14,.st15,.st16,.st17 {fill:#83858e;}
+                            .st1{fill:#FFFFFF; pointer-events: none;}
+                            .st0{fill:#FA484B;}
+                            .st5{fill:#F67028;}
+                            .st6{fill:#FAC54B;}
+                            .st4{fill:#8ABA56;}
+                            .st3{fill:#32B890;}
+                            .st2{fill:#4176A5;}
+                            .st7{fill:#9E51AD;}
+                            .st8{font-family: 'Exo 2', sans-serif;}
+                            .st9{font-size:13.5px;}
+                            .st0,.st2,.st3,.st4,.st5,.st6,.st7 {transition: fill 0.3s;}
+                            .st10:hover{fill:#FA484B;cursor: pointer;}
+                            .st15:hover{fill:#F67028;cursor: pointer;}
+                            .st16:hover{fill:#FAC54B;cursor: pointer;}
+                            .st14:hover{fill:#8ABA56;cursor: pointer;}
+                            .st13:hover{fill:#32B890;cursor: pointer;}
+                            .st12:hover{fill:#4176A5;cursor: pointer;}
+                            .st17:hover{fill:#9E51AD;cursor: pointer;}
+                            text {pointer-events : none;}
+                        </style>
+                        <a href="./planning" id="link-to-planning" target="_top" title="planning">
+                            <g id="PlanPath">
+                                <path class="st15"
+                                    d="M144.4,31.6l-16.6,32.3c17.5,0.7,33.2,8.6,44,20.9l35.7-7l14.6-32.4C199.6,18.3,166,0.8,128.2,0L144.4,31.6z" />
+                                <path class="st1"
+                                    d="M166.7,24.1c0.3-0.4,0.8-0.6,1.4-0.6c4.7,0,9.4,0,14.1,0c0.5,0,1,0.2,1.4,0.6c0.3,0.3,0.4,0.7,0.4,1.2
+                                    c0,1,0,2,0,3c-0.3,0.3-0.5,0.5-0.8,0.8c-2.6,2.6-5.3,5.3-7.9,7.9c-0.1,0.1-0.3,0.3-0.3,0.5c-0.4,1.6-0.8,3.1-1.2,4.7
+                                    c0,0.2-0.1,0.4,0,0.5c0.1,0.2,0.4,0.3,0.7,0.3c1.6-0.4,3.2-0.8,4.7-1.3c0.2,0,0.3-0.1,0.4-0.3c1.5-1.5,3-3,4.5-4.5
+                                    c0,2.5,0,5.1,0,7.6c0,0.4-0.1,0.8-0.3,1.1c-0.3,0.4-0.9,0.7-1.4,0.7c-4.7,0-9.4,0-14.1,0c-0.3,0-0.7,0-1-0.2
+                                    c-0.3-0.2-0.6-0.4-0.7-0.8c-0.1-0.3-0.2-0.6-0.2-0.9c0-6.4,0-12.8,0-19.2C166.3,24.8,166.4,24.4,166.7,24.1z" />
+                                <path class="st1" d="M185.5,28.4c0.5-0.3,1.2-0.4,1.7-0.1c0.3,0.2,0.6,0.4,0.8,0.7c0.5,0.6,0.6,1.5,0.1,2.1
+                                    c-0.1,0.2-0.3,0.4-0.5,0.5c-0.9-0.9-1.8-1.8-2.7-2.7C185.1,28.7,185.3,28.5,185.5,28.4z" />
+                                <path class="st1" d="M176.3,37.5c2.6-2.6,5.2-5.2,7.8-7.8c0.9,0.9,1.8,1.8,2.7,2.7c-2.6,2.6-5.2,5.2-7.8,7.8
+                                    C178.1,39.3,177.2,38.4,176.3,37.5z" />
+                                <path class="st1"
+                                    d="M175.8,38.6l0.1,0.1c0.7,0.7,1.3,1.3,2,2c-1,0.3-1.9,0.5-2.9,0.8C175.3,40.6,175.6,39.6,175.8,38.6z" />
+                            </g>
+                        </a>
+                        <a href="./collecting" id="link-to-collecting" target="_top" title="collecting">
+                            <g id="CollectPath">
+                                <path class="st16" d="M213.9,159.8l34.4-8.7c1.7-8.3,2.6-16.8,2.6-25.6c0-28.5-9.5-54.7-25.4-75.8L210.8,82l-35.6,7
+                                    c7.5,10.2,11.9,22.8,11.9,36.4c0,3.7-0.3,7.3-1,10.8L213.9,159.8z" />
+                                <path class="st1" d="M215.4,91.9c0.2-0.4,0.6-0.6,1.1-0.6c2.3,0,4.7,0,7,0c0.4,0,0.8,0.2,1,0.5c0.4,0.5,0.3,1.2-0.1,1.6
+                                    c-0.2,0.2-0.5,0.3-0.8,0.3c-0.2,0-0.5,0-0.7,0.1c-0.2,0.1-0.3,0.2-0.3,0.4c0,1.6,0,3.1,0,4.7c0,0.8,0.1,1.6,0.4,2.4
+                                    c0.2,0.4,0.4,0.8,0.6,1.2c0.6,1.1,1.2,2.1,1.8,3.2c-3.7,0-7.4,0-11.1,0c0.7-1.2,1.4-2.5,2-3.7c0.3-0.5,0.5-1,0.6-1.6
+                                    c0.1-0.5,0.2-1,0.2-1.5c0-1.6,0-3.2,0-4.8c0-0.3-0.3-0.5-0.5-0.5c-0.3,0-0.5,0-0.7-0.1c-0.3-0.1-0.5-0.3-0.6-0.5
+                                    C215.2,92.8,215.2,92.3,215.4,91.9z" />
+                                <path class="st1" d="M213.8,106.8c4.1,0,8.2,0,12.4,0c0.7,1.3,1.5,2.6,2.2,3.9c0.2,0.3,0.3,0.6,0.4,0.9c0.3,1-0.4,2.2-1.4,2.6
+                                    c-0.3,0.1-0.5,0.1-0.8,0.1c-4.4,0-8.8,0-13.2,0c-0.6,0-1.1-0.2-1.6-0.6c-0.5-0.5-0.8-1.4-0.6-2.1c0.1-0.3,0.2-0.5,0.4-0.8
+                                    C212.3,109.4,213.1,108.1,213.8,106.8z" />
+                            </g>
+                        </a>
+                        <a href="./processing" id="link-to-processing" target="_top" title="processing">
+                            <g id="ProcessPath">
+                                <path class="st14" d="M211.7,165L184,141.6c-4.4,16.4-15.5,30.1-30.1,38.1l-1.1,36.3l28.3,21.5c31.9-16.2,56-45.6,65-81.1L211.7,165
+                                    z" />
+                                <path class="st1" d="M179.4,172.2c0.1,0,0.2,0,0.4,0c7,0,14,0,21,0c0.3,0,0.6,0,0.8,0.1c0.5,0.2,0.7,0.7,0.7,1.2
+                                    c0,4.3,0,8.6,0,12.8c0,0.4-0.1,0.7-0.3,1c-0.3,0.3-0.7,0.5-1.1,0.5c-7.1,0-14.1,0-21.2,0c-0.4,0-0.9-0.2-1.1-0.6
+                                    c-0.2-0.3-0.3-0.6-0.3-0.9c0-4.3,0-8.5,0-12.8c0-0.4,0.1-0.8,0.4-1C178.9,172.4,179.1,172.3,179.4,172.2z M184.3,178
+                                    c-0.3,0-0.7,0.2-1,0.4c-0.2,0.1-0.3,0.4-0.4,0.6c-0.4,0.6-0.4,1.4,0,2.1c0.4,0.6,1,0.9,1.6,1c0.5,0,1-0.1,1.4-0.4
+                                    c0.1-0.1,0.2-0.1,0.3-0.3c0.3-0.5,0.5-1.1,0.4-1.6c-0.1-0.6-0.5-1.2-1.1-1.5C185.2,178,184.8,178,184.3,178z M195.4,178
+                                    c-0.4,0.1-0.9,0.2-1.2,0.5c-0.3,0.4-0.5,0.8-0.5,1.3c-0.1,1,0.7,2,1.6,2.1c0.6,0.1,1.2-0.1,1.7-0.4c0.2-0.1,0.3-0.3,0.4-0.4
+                                    c0.3-0.5,0.4-1.1,0.2-1.6c-0.1-0.4-0.3-0.7-0.6-1C196.5,178.1,195.9,177.9,195.4,178z M189.8,178c-0.3,0-0.5,0.1-0.8,0.3
+                                    c-0.2,0.1-0.4,0.2-0.5,0.4c-0.4,0.6-0.5,1.3-0.3,1.9c0.2,0.6,0.6,1,1.2,1.3c0.6,0.3,1.3,0.1,1.9-0.2c0.1-0.1,0.3-0.1,0.4-0.3
+                                    c0.3-0.4,0.5-0.9,0.4-1.5c0-0.7-0.5-1.5-1.2-1.8C190.6,178,190.2,178,189.8,178z" />
+                                <path class="st1" d="M184.3,179.1c0.3-0.1,0.6,0,0.9,0.1c0.2,0.1,0.3,0.3,0.3,0.5c0.1,0.3,0,0.7-0.3,1c-0.4,0.4-1.3,0.2-1.5-0.4
+                                    C183.6,179.9,183.9,179.3,184.3,179.1z" />
+                                <path class="st1" d="M189.9,179.1c0.4-0.2,0.9,0.1,1.1,0.5c0.1,0.3,0.1,0.6,0,0.9c-0.2,0.3-0.5,0.4-0.8,0.4c-0.3,0-0.5-0.2-0.6-0.4
+                                    c-0.2-0.3-0.3-0.7-0.1-1C189.4,179.3,189.7,179.2,189.9,179.1z" />
+                                <path class="st1" d="M195.3,179.1c0.3-0.1,0.7,0,1,0.2c0.2,0.2,0.3,0.5,0.3,0.7c0,0.4-0.4,0.8-0.8,0.9c-0.3,0-0.6-0.1-0.8-0.3
+                                    c-0.2-0.2-0.3-0.5-0.2-0.8C194.8,179.5,195,179.2,195.3,179.1z" />
+                                <path class="st1" d="M186.8,189c0.9,0,1.7,0,2.6,0c1.3,0,2.7,0,4,0c0.2,0,0.5,0.1,0.5,0.4c0.3,0.9,0.6,1.9,0.9,2.8
+                                    c0.1,0.2,0.1,0.4,0.3,0.6c0.1,0.1,0.3,0.1,0.4,0.1c0.7,0,1.4,0,2.1,0c0.2,0,0.4,0,0.5,0.2c0.3,0.3,0.1,0.7-0.2,0.8
+                                    c-0.1,0-0.2,0-0.3,0c-5,0-10.1,0-15.1,0c-0.3,0-0.6-0.3-0.5-0.6c0-0.3,0.3-0.5,0.6-0.5c0.7,0,1.5,0,2.2,0c0.3,0,0.5-0.2,0.6-0.4
+                                    c0.3-0.9,0.6-1.9,0.9-2.8c0.1-0.2,0.1-0.3,0.2-0.5C186.5,189,186.7,189,186.8,189z" />
+                            </g>
+                        </a>
+                        <a href="./analysing" id="link-to-analysing" target="_top" title="analysing">
+                            <g id="AnalysePath">
+                                <path class="st13" d="M149,218.3l1-36.2c-7.5,3.3-15.8,5.1-24.5,5.1c-8.5,0-16.6-1.7-24-4.9l-29.1,21.8l0.9,35.5
+                                    c15.9,7.3,33.6,11.4,52.2,11.4c18.4,0,36-4,51.7-11.1L149,218.3z" />
+                                <path class="st1" d="M123.3,196c1.4,0,2.8,0,4.3,0c0.5,0,0.8,0.4,0.8,0.8c0,7.2,0,14.3,0,21.5c0,0.2-0.1,0.5-0.2,0.7
+                                    c-0.2,0.2-0.4,0.3-0.6,0.3c-1.4,0-2.8,0-4.1,0c-0.3,0-0.5-0.1-0.7-0.3c-0.1-0.2-0.2-0.4-0.2-0.6c0-7.2,0-14.3,0-21.5
+                                    C122.5,196.4,122.8,196,123.3,196z" />
+                                <path class="st1" d="M114.6,202.5c0.2,0,0.3,0,0.5,0c1.2,0,2.4,0,3.6,0c0.2,0,0.4,0,0.5,0.1c0.3,0.1,0.5,0.3,0.5,0.6
+                                    c0,0.1,0,0.3,0,0.4c0,5,0,9.9,0,14.9c0,0.5-0.4,0.9-0.8,0.9c-1.3,0-2.6,0-3.9,0c-0.2,0-0.4,0-0.6-0.1c-0.3-0.1-0.5-0.4-0.5-0.8
+                                    c0-5,0-10,0-15.1C114,202.9,114.2,202.6,114.6,202.5z" />
+                                <path class="st1" d="M106.3,208.7c1.4,0,2.9,0,4.3,0c0.4,0,0.8,0.4,0.8,0.8c0,2.9,0,5.8,0,8.8c0,0.3-0.1,0.6-0.4,0.8
+                                    c-0.2,0.1-0.4,0.2-0.5,0.2c-1.2,0-2.5,0-3.7,0c-0.3,0-0.6,0-0.8-0.1c-0.3-0.1-0.4-0.5-0.4-0.8c0-2.8,0-5.7,0-8.5
+                                    c0-0.2,0-0.4,0.1-0.6C105.6,209,105.9,208.7,106.3,208.7z" />
+                            </g>
+                        </a>
+                        <a href="./preserving" id="link-to-preserving" target="_top" title="preserving">
+                            <g id="PreservePath">
+                                <path class="st12" d="M67.6,201.7l29-21.8c-14.7-7.8-25.8-21.4-30.4-37.8L31,133L3.8,155.8c8.8,35.5,32.8,65.1,64.7,81.4L67.6,201.7
+                                    z" />
+                                <path class="st1" d="M48.4,150.2c1.8,0,3.6,0.1,5.3,0.4c1,0.2,2.1,0.5,3.1,0.9c0.6,0.3,1.2,0.6,1.7,1c0.3,0.3,0.5,0.6,0.6,1
+                                    c0,0.4-0.1,0.7-0.3,1c-0.3,0.4-0.8,0.8-1.3,1c-0.8,0.4-1.7,0.7-2.5,0.9c-1.4,0.4-2.9,0.5-4.4,0.6c-2.3,0.1-4.7,0-7-0.5
+                                    c-1-0.2-1.9-0.5-2.8-0.9c-0.6-0.3-1.1-0.6-1.5-1.1c-0.2-0.3-0.4-0.7-0.4-1c0-0.4,0.3-0.8,0.6-1.1c0.7-0.6,1.5-0.9,2.4-1.2
+                                    c1.2-0.4,2.5-0.6,3.8-0.8C46.6,150.3,47.5,150.3,48.4,150.2z" />
+                                <path class="st1" d="M38.9,157.1c1.2,0.8,2.6,1.2,4,1.5c2.1,0.5,4.3,0.6,6.4,0.6c1,0,2-0.1,3.1-0.2c2-0.2,4-0.6,5.8-1.4
+                                    c0.4-0.2,0.7-0.3,1-0.6c0,1.4,0,2.8,0,4.2c0,0.3-0.1,0.7-0.3,0.9c-0.3,0.4-0.7,0.7-1.2,0.9c-0.3,0.2-0.5,0.3-0.8,0.4
+                                    c-1.6,0.6-3.3,0.9-4.9,1.1c-1.9,0.2-3.8,0.2-5.7,0c-1.3-0.1-2.5-0.3-3.7-0.7c-1-0.3-2-0.6-2.8-1.3c-0.3-0.3-0.7-0.6-0.8-1
+                                    c0-0.1,0-0.3,0-0.4C38.9,159.8,38.9,158.4,38.9,157.1z" />
+                                <path class="st1" d="M38.9,164.8c0.5,0.3,1,0.5,1.6,0.8c1.9,0.7,3.9,1.1,5.9,1.2c1.9,0.1,3.7,0.1,5.6,0c1.9-0.2,3.9-0.5,5.7-1.2
+                                    c0.5-0.2,1.1-0.5,1.6-0.8c0,1.4,0,2.8,0,4.2c0,0.2,0,0.3-0.1,0.5c-0.1,0.4-0.4,0.6-0.7,0.9c-0.7,0.6-1.6,0.9-2.4,1.2
+                                    c-0.6,0.2-1.3,0.4-1.9,0.5c-1.1,0.2-2.2,0.3-3.3,0.4c-0.9,0.1-1.8,0-2.7,0c-1.8-0.1-3.6-0.3-5.4-0.7c-1-0.3-2.1-0.7-3-1.4
+                                    c-0.3-0.2-0.5-0.5-0.7-0.8c-0.1-0.3-0.1-0.6-0.1-0.8C38.9,167.4,38.9,166.1,38.9,164.8z" />
+                            </g>
+                        </a>
+                        <a href="./sharing" id="link-to-sharing" target="_top" title="sharing">
+                            <g id="SharePath">
+                                <path class="st17" d="M29.8,127.8l35.1,9c-0.7-3.7-1.1-7.5-1.1-11.4c0-13.4,4.3-25.9,11.6-36L60.6,56.3l-34.8-7
+                                    C9.6,70.4,0,96.8,0,125.5c0,8.6,0.9,17,2.5,25.1L29.8,127.8z" />
+                                <path class="st1" d="M42.7,75c0.7-0.1,1.5-0.1,2.2,0.3c1,0.4,1.7,1.3,2,2.3c0.2,0.6,0.1,1.4-0.1,2c-0.4,1.1-1.3,2-2.4,2.4
+                                    c-0.4,0.1-0.8,0.1-1.3,0.1c-0.6-0.1-1.1-0.2-1.6-0.5c-1.1,0.6-2.2,1.2-3.3,1.8c-0.2,0.1-0.3,0.2-0.5,0.3c-0.8,0.4-1.5,0.9-2.3,1.3
+                                    c0.1,0.4,0.2,0.8,0.2,1.2c0,0.4-0.1,0.8-0.2,1.1c0.8,0.4,1.5,0.9,2.3,1.3c0.2,0.1,0.3,0.2,0.5,0.3c1,0.6,2,1.1,3,1.7
+                                    c0.5-0.4,1.1-0.7,1.8-0.7c0.8-0.1,1.6,0.1,2.3,0.5c1,0.6,1.7,1.7,1.7,2.8c0,0.7-0.1,1.4-0.4,1.9c-0.3,0.6-0.8,1.1-1.4,1.4
+                                    c-0.3,0.2-0.7,0.3-1,0.4c-0.6,0.1-1.3,0.1-1.9-0.2c-0.5-0.2-0.9-0.4-1.3-0.8c-0.6-0.5-1-1.3-1.1-2.1c-0.1-0.6,0-1.2,0.2-1.8
+                                    c-0.7-0.4-1.4-0.8-2.2-1.2c-0.4-0.2-0.7-0.4-1-0.5c-0.8-0.5-1.7-0.9-2.5-1.4c-0.5,0.4-1.1,0.7-1.7,0.8c-0.8,0.2-1.7,0-2.5-0.4
+                                    c-0.6-0.4-1.1-0.9-1.4-1.5c-0.4-0.7-0.5-1.5-0.3-2.3c0.1-0.6,0.4-1.1,0.7-1.6c0.4-0.5,1-0.9,1.7-1.2c0.6-0.2,1.3-0.3,2-0.1
+                                    c0.6,0.1,1.1,0.4,1.5,0.8c1.1-0.6,2.2-1.2,3.3-1.8c0.1-0.1,0.3-0.1,0.4-0.2c0.7-0.4,1.4-0.8,2.2-1.2c-0.7-1.3-0.4-3.1,0.7-4.1
+                                    C41.4,75.5,42,75.2,42.7,75z" />
+                            </g>
+                        </a>
+                        <a href="./reusing" id="link-to-reusing" target="_top" title="reusing">
+                            <g id="ReusePath">
+                                <path class="st10" d="M63.9,52.1l14.9,33.1c10.7-12.4,26.2-20.5,43.6-21.3l16.7-32.3L122.9,0C85.3,0.8,51.7,18.1,29.2,45L63.9,52.1z
+                                    " />
+                                <path class="st1" d="M92.5,17.4c2-0.9,4.1-1.3,6.3-1.3c0.2,0,0.4,0.1,0.5,0.3c0.2,0.2,0.2,0.6,0,0.8c-0.1,0.2-0.4,0.3-0.6,0.4
+                                    c-0.4,0.2-0.8,0.3-1.1,0.5c-0.3,0.2-0.6,0.3-0.9,0.5c-0.6,0.4-1.2,0.8-1.7,1.2c-0.8,0.7-1.5,1.4-2,2.3c-1,1.5-1.6,3.2-1.8,5
+                                    c1.1,0,2.2,0,3.3,0c0.3,0,0.5,0.1,0.6,0.4c0.1,0.2,0.1,0.4,0,0.6c-0.1,0.2-0.3,0.4-0.5,0.6c-1.9,2.1-3.9,4.3-5.8,6.4
+                                    c-0.2,0.2-0.5,0.3-0.8,0.2c-0.1-0.1-0.2-0.2-0.3-0.3c-1.9-2.1-3.9-4.3-5.8-6.5c-0.2-0.2-0.5-0.5-0.4-0.8c0-0.4,0.3-0.7,0.7-0.7
+                                    c1.1,0,2.3,0,3.4,0c0.2-1.9,0.8-3.7,1.8-5.2C88.7,20,90.5,18.4,92.5,17.4z" />
+                                <path class="st1" d="M104.5,19.1c0.3-0.3,0.8-0.3,1,0c2,2.2,3.9,4.4,5.9,6.5c0.2,0.2,0.5,0.5,0.4,0.8c0,0.4-0.4,0.7-0.7,0.7
+                                    c-1.1,0-2.3,0-3.4,0c-0.2,2.3-1.1,4.4-2.5,6.2c-1.3,1.7-3.2,3-5.2,3.8c-0.6,0.2-1.2,0.4-1.8,0.6c-1.2,0.3-2.4,0.4-3.7,0.4
+                                    c-0.4,0-0.7-0.5-0.6-0.9c0.1-0.1,0.1-0.3,0.3-0.4c0.5-0.3,1.1-0.5,1.6-0.8c0.6-0.4,1.3-0.7,1.9-1.2c0.9-0.7,1.7-1.5,2.4-2.4
+                                    c0.5-0.7,0.9-1.5,1.3-2.3c0.4-1,0.7-2,0.8-3.1c-1.1,0-2.3,0-3.5,0c-0.4,0-0.8-0.4-0.7-0.8c0-0.3,0.3-0.5,0.5-0.8
+                                    C100.6,23.4,102.6,21.2,104.5,19.1z" />
+                            </g>
+                        </a>
+                        <text transform="matrix(1 0 0 1 16.4197 111.8653)" class="st1 st8 st9">Share</text>
+                        <text transform="matrix(1 0 0 1 76.3974 53.4992)" class="st1 st8 st9">Reuse</text>
+                        <text transform="matrix(1 0 0 1 19.2957 187.4998)" class="st1 st8 st9">Preserve</text>
+                        <text transform="matrix(1 0 0 1 90.1372 234.4302)" class="st1 st8 st9">Analyse</text>
+                        <text transform="matrix(1 0 0 1 162.3473 208.6529)" class="st1 st8 st9">Process</text>
+                        <text transform="matrix(1 0 0 1 159.7342 61.5168)" class="st1 st8 st9">Plan</text>
+                        <text transform="matrix(1 0 0 1 197.0817 128.9797)" class="st1 st8 st9">Collect</text>
+                    </svg>
+                </li>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Your role</a>
+            <ul class="list-unstyled">
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/researcher.html">Researcher</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_steward_policy.html">Data steward policy</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_steward_research.html">Data steward research</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_steward_infrastructure.html">Data steward infrastructure</a>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Your domain</a>
+            <ul class="list-unstyled">
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/plant_sciences.html">Plant sciences</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/marine_metagenomics.html">Marine metagenomics</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/human_data.html">Human data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/biomolecular_simulation_data.html">Biomolecular simulation data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/intrinsically_disordered_proteins.html">Intrinsically disordered proteins</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/microbial_biotechnology.html">Microbial biotechnology</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/epitranscriptome_data.html">Epitranscriptome data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/proteomics.html">Proteomics</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/toxicology_data.html">Toxicology data</a>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="">Your tasks</a>
+            <ul class="list-unstyled">
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/compliance_monitoring.html">Compliance monitoring</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_analysis.html">Data analysis</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_management_plan.html">Data management plan</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_organisation.html">Data organisation</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_protection.html">Data protection</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_publication.html">Data publication</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_quality.html">Data quality</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/storage.html">Data storage</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/data_transfer.html">Data transfer</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/metadata_management.html">Documentation and metadata</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/existing_data.html">Existing data</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/identifiers.html">Identifiers</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/licensing.html">Licensing</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/machine_actionability.html">Machine actionability</a>
+                </li>
+                <li>    
+                    <a class="btn hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/sensitive_data.html">Sensitive data</a>
+                </li>
+            </ul>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/tool_assembly.html">Tool assembly</a>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/national_resources.html">National resources</a>
+        </li>
+        <li class="mt-3">    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/all_tools_and_resources.html">All tools and resources</a>
+        </li>
+        <li>    
+            <a class="btn bg-light hover-primary text-start d-block mt-1" href="/pages/bedroesb/rdmkit/all_training_resources.html">All training resources</a>
+        </li>
+    </ul>
+    <script>$("li.active").parents('li').toggleClass("active parent");</script>
+</nav>
+
+            </div>
+            <!-- Content Column -->
+            <div class="col-lg-9">
+                <main id="main" class="mb-5">
+    <h1 class="d-flex justify-content-between">Norway
+        <div class="d-flex align-items-center">
+            <div class="btn-group">
+                <a role="button" data-bs-toggle="tooltip" title="Propose changes to this page on GitHub"  href="https://github.com/bedroesb/rdmkit/blob/master/pages/national_resources/no_resources.md" class="btn hover-primary text-primary"><i class="fas fa-pencil-alt"></i></a>
+                <a role="button" data-bs-toggle="tooltip" title="Check out the history of this page" href="https://github.com/bedroesb/rdmkit/commits/master/pages/national_resources/no_resources.md" class="btn hover-primary text-primary"><i class="fas fa-history"></i></a>
+            </div>
+            <span class="text-muted fs-6">14-Dec-21</span>
+        </div>
+    </h1><script>
+  $(document).ready(function () {
+    $('#toc').toc({ minimumHeaders: 2, listType: 'ul', showSpeed: 0, headers: 'h2' , title: '' });
+  });
+</script>
+<div class="col-12 col-sm-7 col-xl-5">
+  <div id="toc" class="bg-light p-3 rounded my-4"></div>
+</div>
+
+    <!---Following information for the page text. All fields are optional--->
+<!---If the information is already in another resource, please include the link instead of duplicating information--->
+<!---Please focus on resources that are relevant for the whole country for life sciences--->
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This page provides a set of necessary information, giving an overview of the data management toolkit and it is aimed at the current and future scientists in Norway and their collaborators, in life sciences areas.</p>
+
+<!---General RDM considerations for your country, how to deal with RDM on a national level--->
+<p>Norway has released a 
+<a href="https://www.regjeringen.no/en/dokumenter/national-strategy-on-access-to-and-sharing-of-research-data/id2582412/?ch=1">National strategy on access to and sharing of research data</a> in 2018.</p>
+
+<h2 id="funder-policies-on-research-data-in-norway">Funder policies on research data in Norway</h2>
+
+<p>List of funders with Data Management Policies in Norway:</p>
+
+<ul>
+  <li><a href="https://www.forskningsradet.no/contentassets/e4cd6d2c23cf49d4989bb10c5eea087a/the-research-council-of-norways-policy-for-open-access-to-research-data.pdf">Forskningsrådet (also known as Research Council Norway)</a></li>
+</ul>
+
+<h2 id="institutional-policies-on-research-data-in-norway">Institutional policies on research data in Norway</h2>
+
+<p>We provide here a list of higher education institutions with Data Management Policies in Norway:</p>
+
+<ul>
+  <li><a href="https://www.nmbu.no/download/file/fid/31742">Norwegian University of Life Sciences</a></li>
+  <li><a href="https://www.ntnu.edu/policy-for-open-science">Norwegian university of science and technology</a></li>
+  <li><a href="https://www.uib.no/en/ub/111372/research-data">University of Bergen</a></li>
+  <li><a href="https://www.uio.no/english/for-employees/support/research/research-data-management/policies-and-guidelines/index.html">University of Oslo</a></li>
+  <li><a href="https://en.uit.no/regelverk/sentraleregler#innhold_740835">The Arctic University of Norway</a></li>
+</ul>
+
+<h2 id="acts-and-laws-relevant-to-life-sciences-research-and-data-in-norway">Acts and Laws Relevant to Life Sciences Research and Data in Norway</h2>
+<h3 id="privacy">Privacy</h3>
+<ul>
+  <li><a href="https://lovdata.no/dokument/RFA/lov/2000-04-14-31">Personvernforordningen</a></li>
+  <li><a href="https://lovdata.no/dokument/SF/forskrift/2018-06-15-876">Forskrift om behandling av personopplysninger</a></li>
+  <li><a href="https://lovdata.no/dokument/SF/forskrift/2018-06-15-877">Overgangsregler om behandling av personopplysninger</a></li>
+</ul>
+
+<h3 id="health-research">Health Research</h3>
+<ul>
+  <li>Health Register Act <a href="https://lovdata.no/dokument/NL/lov/2014-06-20-43">Lov om helseregistre og behandling av helseopplysninger (helseregisterloven)</a></li>
+  <li><a href="https://lovdata.no/dokument/LTI/lov/2008-06-20-44">Lov om medisinsk og helsefaglig forskning (helseforskningsloven)</a></li>
+  <li><a href="http://www.lovdata.no/for/sf/ho/ho-20090701-0955.html">Forskrift om organisering av medisinsk og helsefaglig forskning</a></li>
+  <li><a href="http://www.regjeringen.no/nb/dep/hod/dok/lover_regler/forskrifter/2009/helseforskningsloven.html?id=570542">Merknader til forskrifter til  Helseforskningsloven</a></li>
+  <li><a href="http://www.regjeringen.no/nb/dep/hod/dok/veiledninger_og_brosjyrer/2010/Veileder-til-lov-20-juni-2008-nr-44-om-medisinsk-og-helsefaglig-forskning-helseforskningsloven.html?id=599512">Veileder til Helseforskningsloven</a></li>
+  <li><a href="https://lovdata.no/dokument/SF/forskrift/2018-04-27-645">Forskrift om befolkningsbaserte helseundersøkelser</a></li>
+  <li><a href="http://www.lovdata.no/all/nl-19990702-064.html">Lov om helsepersonell mv (helsepersonelloven)</a></li>
+  <li><a href="http://www.lovdata.no/all/nl-19990702-063.html">Lov om pasient- og brukerrettigheter (pasient- og brukerrettighetsloven)</a></li>
+  <li><a href="http://www.lovdata.no/all/nl-19921204-132.html">Lov om legemidler mv (legemiddelloven)</a></li>
+  <li><a href="http://www.lovdata.no/for/sf/ho/ho-20091030-1321.html">Forskrift om klinisk utprøving av legemidler til mennesker</a></li>
+  <li><a href="https://lovdata.no/dokument/NL/lov/2003-12-05-100">Lov om humanmedisinsk bruk av bioteknologi mm (bioteknologiloven)</a>
+    <h3 id="other-laws-of-relevance-in-this-context">Other laws of relevance in this context</h3>
+  </li>
+  <li><a href="https://lovdata.no/dokument/NL/lov/1992-12-04-126">Lov om arkiv [arkivlova]</a></li>
+  <li><a href="https://lovdata.no/dokument/NL/lov/2017-04-28-23">Lov om organisering av forskningsetisk arbeid * (forskningsetikkloven)</a></li>
+  <li><a href="https://lovdata.no/dokument/NL/lov/2017-04-28-23">Lov om endringer i patentloven mv. (forenklinger)</a></li>
+  <li><a href="https://lovdata.no/dokument/NL/lov/2018-06-15-40">Lov om opphavsrett til åndsverk mv. (åndsverkloven)</a></li>
+  <li><a href="https://lovdata.no/dokument/NL/lov/2005-04-01-15">Lov om universiteter og høyskoler (universitets- og høyskoleloven)</a></li>
+  <li><a href="https://lovdata.no/dokument/NL/lov/2018-06-01-24">Lov om nasjonal sikkerhet (sikkerhetsloven)</a></li>
+</ul>
+
+<h2 id="regulations">Regulations</h2>
+<h3 id="privacy-1">Privacy</h3>
+<ul>
+  <li><a href="https://www.datatilsynet.no/regelverk-og-verktoy/lover-og-regler/personvern-vs.-ytringsfrihet/">Datatilsynet: Journalistiske, akademiske, kunstneriske og litterære formål</a></li>
+  <li><a href="https://www.datatilsynet.no/regelverk-og-verktoy/atferdsnorm/">Atferdsnormer Informasjonssikkerhet og internkontroll</a>
+    <h3 id="health-research-1">Health research</h3>
+  </li>
+  <li><a href="https://ehelse.no/normen">e-helse Direktoratet: “Normen”: Norm for helsedata</a></li>
+</ul>
+
+<h3 id="institutional-guidelines-of-personal-data">Institutional guidelines of Personal Data</h3>
+
+<ul>
+  <li><a href="https://innsida.ntnu.no/wiki/-/wiki/English/Collection+of+personal+data+for+research+projects">Norwegian University of Life Sciences Privacy in Research guidlines</a>, <a href="https://innsida.ntnu.no/helseforskning">Guidlines onf health research</a></li>
+  <li><a href="https://www.nmbu.no/en/research/for_researchers/researchdata/node/34780">Norwegian university of science and technology</a></li>
+  <li><a href="https://www.uib.no/en/ub/111372/research-data">University of Bergen</a></li>
+  <li><a href="https://www.uio.no/english/for-employees/support/privacy-dataprotection/personal-data-in-research.html">University of Oslo</a></li>
+  <li><a href="https://uit.no/Content/755221/cache=1637158889000/Retningslinjer+for+behandling+av+personopplysningar+i+forskings-+og+studentprosjekt+ved+UiT+%28oppdatert+300921%29.pdf">The Arctic University of Norway</a></li>
+</ul>
+
+<h2 id="domain-specific-infrastructuresresources">Domain-specific infrastructures/resources</h2>
+<p>Following resources and tools could be useful to implement data management practices, relevant to your research area/topic:</p>
+
+<ul>
+  <li><a href="https://ega.elixir.no/">Norwegian node of the European genome-phenome archive for sensitive human (genetic) data</a></li>
+  <li><a href="https://rdmkit.elixir-europe.org/tsd_assembly.html">National Norwegian services for sensitive (personal) data - Tool Assembly RDMkit Page</a></li>
+  <li><a href="https://bedroesb.github.io/rdmkit/covid19_data_portal.html">Covid-19 Data Portal</a></li>
+  <li><a href="https://rdmkit.elixir-europe.org/marine_metagenomics_assembly.html">Marine metagenomics Portal - Tool Assembly RDMkit Page</a></li>
+</ul>
+
+    
+<h2>Relevant tools and resources</h2>
+<a class="visually-hidden-focusable" href='#skip-tool-table'>Skip tool table</a>
+<div class="table-responsive mt-4 mb-5">
+    <table id="tooltable" class="table display">
+        <thead>
+            <tr>
+                <th>Resource
+                </th>
+                <th>Description</th>
+                <th>Related pages</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <td><a href="https://www.feide.no/">Feide</a></td>
+                <td>Feide is the national solution for secure login and data exchange in education and research. Feide can be linked with ELIXIR-AAI through eduGAIN.</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/marine_metagenomics_assembly.html"><span class="badge default-badge">Marine Metagenomics</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://elixir-no.ds-wizard.org/">DS Wizard ELIXIR-Norway</a></td>
+                <td>DS Wizard is a simple but powerful solution for researchers to help them understand what is needed for a good, FAIR-oriented Data Stewardship, and to help them build their own Data Management Plans. The template we provide in this instance provides additional guidance on resources, laws and regulations in Norway.</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_management_plan.html"><span class="badge default-badge">Data management plan</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://mmp2.sfb.uit.no/metapipe/">Meta-pipe</a></td>
+                <td>META-pipe is a pipeline for annotation and analysis of marine metagenomics samples, which provides insight into phylogenetic diversity, metabolic and functional potential of environmental communities.</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/marine_metagenomics_assembly.html"><span class="badge default-badge">Marine Metagenomics</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://mmp2.sfb.uit.no/mardb/">MarDB</a></td>
+                <td>MarDB includes all non-complete marine microbial genomes regardless of level of completeness. Each entry contains 120 metadata fields including information about sampling environment or host, organism and taxonomy, phenotype, pathogenicity, assembly and annotation.</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/marine_metagenomics_assembly.html"><span class="badge default-badge">Marine Metagenomics</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://mmp2.sfb.uit.no/marfun/">MarFun</a></td>
+                <td>MarFun is a manually curated marine fungi genome database.</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/marine_metagenomics_assembly.html"><span class="badge default-badge">Marine Metagenomics</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://covid19dataportal.no/">Norwegian COVID-19 Data Portal</a></td>
+                <td>The Norwegian COVID-19 Data Portal aims to bundle the Norwegian research efforts and offers guidelines, tools, databases and services to support Norwegian COVID-19 researchers.</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/sensitive_data.html"><span class="badge default-badge">Sensitive data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/existing_data.html"><span class="badge default-badge">Existing data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a>
+                <a class="nohover" href=""><span class="badge default-badge"></span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://ega.elixir.no/">Norwegian Federated EGA</a></td>
+                <td>Federated instance collects metadata of -omics data collections stored in national or regional archives and makes them available for search through the main EGA portal. With this solution, sensitive data will not physically leave the country, but will reside on TSD.</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/sensitive_data.html"><span class="badge default-badge">Sensitive data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/existing_data.html"><span class="badge default-badge">Existing data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://usegalaxy.no">usegalaxy.no</a></td>
+                <td></td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/sensitive_data.html"><span class="badge default-badge">Sensitive data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/existing_data.html"><span class="badge default-badge">Existing data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://nels.bioinfo.no">NeLS</a></td>
+                <td>Norwegian e-Infrastructure for Life Sciences enables Norwegian life scientists and their international collaborators to store, share, archive, and analyse their omics-scale data</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/nels_assembly.html"><span class="badge default-badge">NeLS</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/marine_metagenomics_assembly.html"><span class="badge default-badge">Marine Metagenomics</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://documentation.sigma2.no/files_storage/nird.html">NIRD</a></td>
+                <td>The National Infrastructure for Research Data (NIRD) infrastructure offers storage services, archiving services, and processing capacity for computing on the stored data. It offers services and capacities to any scientific discipline that requires access to advanced, large-scale, or high-end resources for storing, processing, publishing research data or searching digital databases and collections. This service is owned and operated by [UNINETT Sigma2](https://www.sigma2.no).</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_transfer.html"><span class="badge default-badge">Data transfer</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/storage.html"><span class="badge default-badge">Data storage</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/nels_assembly.html"><span class="badge default-badge">NeLS</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://documentation.sigma2.no/hpc_machines/saga.html">saga</a></td>
+                <td>saga is the national hpc resource. It has a computational capacity of approximately 140 million CPU hours a year and a life expectancy of four year, until 2023. The Norwegian academic high-performance computing and storage infrastructure is maintained by [Sigma2 NRIS](https://sigma2.no/nris), which is a joint collaboration between UiO, UiB, NTNU, UiT, and [UNINETT Sigma2](https://www.sigma2.no/).</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_analysis.html"><span class="badge default-badge">Data analysis</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://rette.app.uib.no/">RETTE</a></td>
+                <td>System for Risk and compliance. Processing of personal data in research and student projects at UiB.</td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/human_data.html"><span class="badge default-badge">Human data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_protection.html"><span class="badge default-badge">Data protection</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/sensitive_data.html"><span class="badge default-badge">Sensitive data</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_policy.html"><span class="badge default-badge">Data steward policy</span></a>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_steward_research.html"><span class="badge default-badge">Data steward research</span></a></td>
+            </tr>
+            <tr>
+                
+                <td><a href="https://dataverse.no/">DataverseNO</a></td>
+                <td></td>
+                <td>
+                <a class="nohover" href="/pages/bedroesb/rdmkit/data_publication.html"><span class="badge default-badge">Data publication</span></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="skip-tool-table"></div>
+    
+
+    
+<span class="d-block h2-like fs-2 text-dark">Contributors</span>
+<div class="p-4 bg-light rounded">
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Fedrico Bianchini">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+    </div>' title="Fedrico Bianchini"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/no_github" alt="Avatar of the contributor Fedrico Bianchini">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Fedrico Bianchini
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/korbinib" alt="Avatar of the contributor Korbinian Bösl">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/korbinib"><i class="fab fa-github"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="mailto:korbinian.bosl@uib.no"><i class="fas fa-envelope"></i></a></div>
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://orcid.org/0000-0003-0498-4273"><i class="fab fa-orcid"></i></a></div>
+    </div>' title="Korbinian Bösl"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/korbinib" alt="Avatar of the contributor Korbinian Bösl">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Korbinian Bösl
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            <i class="fa fa-crown text-dark"></i>
+        </div>
+    </a>
+    <a tabindex="0" role="button" class="btn bg-white hover-primary m-1 position-relative" data-bs-trigger="focus" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid rounded-circle contributor-badge" src="https://avatars.githubusercontent.com/Nazeeefa" alt="Avatar of the contributor Nazeefa Fatima">
+    </div>
+    <div class="d-flex mt-3 justify-content-center">
+        <div class="mx-1"><a class="btn btn-primary rounded-circle social-icons p-0" href="https://github.com/Nazeeefa"><i class="fab fa-github"></i></a></div>
+    </div>' title="Nazeefa Fatima"> 
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img class="img-fluid rounded-circle contributor-badge-sm" src="https://avatars.githubusercontent.com/Nazeeefa" alt="Avatar of the contributor Nazeefa Fatima">
+            </div>
+            <div class="flex-grow-1 ms-2">
+                Nazeefa Fatima
+            </div>
+        </div>
+        <div class="position-absolute top-0 start-100 translate-middle">
+            
+        </div>
+    </a>
+</div>
+
+</main>
+
+
+            </div>
+        </div>
+    </div>
+    <footer id="footer" class="bg-dark text-white">
+    <div class="container py-1 py-4">
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6">
+                <img class="company-image" width="120px;" src="/pages/bedroesb/rdmkit/assets/img/converge_logo_inverted.svg" alt="ELIXIR converge logo"/>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <ul class="mb-0">
+                    <li><a href="/pages/bedroesb/rdmkit/contributors.html">Contributors</a></li>
+                    <li><a href="https://elixir-europe.org/about-us/how-funded/eu-projects/converge">ELIXIR-CONVERGE</a></li>
+                    <li>Contributions from the 23 ELIXIR Nodes<br></li>
+                    <li><a href="/pages/bedroesb/rdmkit/support.html">Institutes, projects and funders</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <ul class="mb-0">
+                    <li><a href="/pages/bedroesb/rdmkit/about.html">About</a></li>
+                    <li><a href="/pages/bedroesb/rdmkit/contact.html">Contact</a></li>
+                    <li><a href="/pages/bedroesb/rdmkit/accessibility.html">Accessibility</a></li>
+                    <li><a href="/pages/bedroesb/rdmkit/privacy.html">Privacy</a></li>
+                </ul>
+
+            </div>
+            <div class="col-lg-3 col-sm-6 d-flex justify-content-between align-items-center">
+                <img src="/pages/bedroesb/rdmkit/assets/img/Flag_of_Europe.svg" alt="European flag" height="70px"/>
+                <img src="/pages/bedroesb/rdmkit/assets/img/RDMkit_logo_condensed_inverted.svg" alt="RDMkit logo condensed" width="88px">
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-center pt-4">
+                <p class="mb-0">Recommended in the <a href="https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/guidance/programme-guide_horizon_en.pdf">Horizon Europe Program Guide</a> as the "resource for Data Management guidelines and good practices for the Life Sciences"</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+        width="70px" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/></a>
+        <span
+        xmlns:dct="http://purl.org/dc/terms/" property="dct:title">RDMkit</span> by <a
+        xmlns:cc="http://creativecommons.org/ns#"
+        href="https://elixir-europe.org/about-us/how-funded/eu-projects/converge"
+        property="cc:attributionName" rel="cc:attributionURL">ELIXIR-CONVERGE</a> is licensed under a <a
+        rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+        Attribution 4.0 International License</a>, except where otherwise noted.
+    </div>
+</footer>
+
+    
+<!-- START Bootstrap-Cookie-Alert -->
+<div class="alert text-center cookiealert bg-dark text-white rounded-0" role="alert">
+    We use cookies to ensure you get the best experience on our website. Read our
+    <a class="text-white text-hover-primary fw-bold" href="/pages/bedroesb/rdmkit/privacy.html">privacy policy</a> to find out more.
+    <button type="button" id="acceptcookies" class="btn bg-white hover-primary ms-2" >
+        Got it!
+    </button>
+</div>
+<script>
+    /*
+     * Bootstrap Cookie Alert by Wruczek
+     * https://github.com/Wruczek/Bootstrap-Cookie-Alert
+     * Released under MIT license
+     */
+     !function(){"use strict";var n=document.querySelector(".cookiealert"),e=document.querySelector("#acceptcookies");n&&(n.offsetHeight,function(e){for(var t=e+"=",o=decodeURIComponent(document.cookie).split(";"),c=0;c<o.length;c++){for(var n=o[c];" "===n.charAt(0);)n=n.substring(1);if(0===n.indexOf(t))return n.substring(t.length,n.length)}return""}("acceptCookies")||n.classList.add("show"),e.addEventListener("click",function(){var e,t,o,c;e="acceptCookies",t=!0,o=365,(c=new Date).setTime(c.getTime()+24*o*60*60*1e3),c="expires="+c.toUTCString(),document.cookie=e+"="+t+";"+c+";path=/",n.classList.remove("show"),window.dispatchEvent(new Event("cookieAlertAccept"))}))}();
+</script>
+<!-- END Bootstrap-Cookie-Alert -->
+
+</body>
+</html>
