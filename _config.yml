@@ -79,3 +79,4 @@ defaults:
 plugins:
   - jemoji
   - jekyll-github-metadata
+  - jekyll-last-modified-at
